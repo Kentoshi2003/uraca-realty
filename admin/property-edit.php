@@ -12,9 +12,174 @@ $property = $propertyId ? get_admin_property($propertyId) : null;
 $categories = get_categories(false);
 $errors = [];
 
+const LISTING_HERO_WIDTH = 1600;
+const LISTING_HERO_HEIGHT = 1000;
+const LISTING_HERO_MIN_WIDTH = 1600;
+const LISTING_HERO_MIN_HEIGHT = 1000;
+
 if ($propertyId && !$property) {
     flash('Listing not found.', 'danger');
     redirect('index.php');
+}
+
+function listing_upload_finfo(): finfo
+{
+    static $finfo;
+    if (!$finfo) {
+        $finfo = new finfo(FILEINFO_MIME_TYPE);
+    }
+
+    return $finfo;
+}
+
+function listing_allowed_image_types(): array
+{
+    return [
+        'image/jpeg' => 'jpg',
+        'image/png' => 'png',
+        'image/webp' => 'webp',
+    ];
+}
+
+function listing_has_upload(string $fieldName, ?int $index = null): bool
+{
+    if (!isset($_FILES[$fieldName])) {
+        return false;
+    }
+
+    if ($index === null) {
+        return !empty($_FILES[$fieldName]['name']) && (int) ($_FILES[$fieldName]['error'] ?? UPLOAD_ERR_NO_FILE) !== UPLOAD_ERR_NO_FILE;
+    }
+
+    return !empty($_FILES[$fieldName]['name'][$index]) && (int) ($_FILES[$fieldName]['error'][$index] ?? UPLOAD_ERR_NO_FILE) !== UPLOAD_ERR_NO_FILE;
+}
+
+function validate_listing_image_upload(string $fieldName, array &$errors, string $label, bool $requireHeroSize = false, ?int $index = null): bool
+{
+    if (!listing_has_upload($fieldName, $index)) {
+        return true;
+    }
+
+    $file = $_FILES[$fieldName];
+    $error = $index === null ? (int) $file['error'] : (int) $file['error'][$index];
+    $size = $index === null ? (int) $file['size'] : (int) $file['size'][$index];
+    $tmpName = $index === null ? (string) $file['tmp_name'] : (string) $file['tmp_name'][$index];
+
+    if ($error !== UPLOAD_ERR_OK) {
+        $errors[] = $label . ' upload failed. Please choose the image again.';
+        return false;
+    }
+
+    if ($size > 5 * 1024 * 1024) {
+        $errors[] = $label . ' must be 5MB or smaller.';
+        return false;
+    }
+
+    $mime = listing_upload_finfo()->file($tmpName);
+    if (!isset(listing_allowed_image_types()[$mime])) {
+        $errors[] = $label . ' must be a JPG, PNG, or WEBP image.';
+        return false;
+    }
+
+    $dimensions = getimagesize($tmpName);
+    if (!$dimensions) {
+        $errors[] = $label . ' could not be read as a valid image.';
+        return false;
+    }
+
+    if ($requireHeroSize) {
+        if ($dimensions[0] < LISTING_HERO_MIN_WIDTH || $dimensions[1] < LISTING_HERO_MIN_HEIGHT) {
+            $errors[] = $label . ' must be at least ' . LISTING_HERO_MIN_WIDTH . 'x' . LISTING_HERO_MIN_HEIGHT . ' pixels so it fits the public hero area.';
+            return false;
+        }
+
+        if (!function_exists('imagecreatetruecolor')) {
+            $errors[] = $label . ' requires the PHP GD extension so it can be cropped to ' . LISTING_HERO_WIDTH . 'x' . LISTING_HERO_HEIGHT . '.';
+            return false;
+        }
+    }
+
+    return true;
+}
+
+function validate_listing_uploads(array &$errors): void
+{
+    validate_listing_image_upload('hero_image_upload', $errors, 'Hero image', true);
+
+    if (empty($_FILES['images']['name'][0])) {
+        return;
+    }
+
+    foreach ($_FILES['images']['tmp_name'] as $index => $_) {
+        validate_listing_image_upload('images', $errors, 'Gallery image ' . ($index + 1), false, $index);
+    }
+}
+
+function create_listing_image_resource(string $tmpName, string $mime)
+{
+    return match ($mime) {
+        'image/jpeg' => imagecreatefromjpeg($tmpName),
+        'image/png' => imagecreatefrompng($tmpName),
+        'image/webp' => imagecreatefromwebp($tmpName),
+        default => false,
+    };
+}
+
+function save_listing_hero_crop(string $tmpName, string $destination, string $mime): bool
+{
+    $source = create_listing_image_resource($tmpName, $mime);
+    if (!$source) {
+        return false;
+    }
+
+    $sourceWidth = imagesx($source);
+    $sourceHeight = imagesy($source);
+    $targetRatio = LISTING_HERO_WIDTH / LISTING_HERO_HEIGHT;
+    $sourceRatio = $sourceWidth / $sourceHeight;
+
+    if ($sourceRatio > $targetRatio) {
+        $cropHeight = $sourceHeight;
+        $cropWidth = (int) round($sourceHeight * $targetRatio);
+        $cropX = (int) floor(($sourceWidth - $cropWidth) / 2);
+        $cropY = 0;
+    } else {
+        $cropWidth = $sourceWidth;
+        $cropHeight = (int) round($sourceWidth / $targetRatio);
+        $cropX = 0;
+        $cropY = (int) floor(($sourceHeight - $cropHeight) / 2);
+    }
+
+    $target = imagecreatetruecolor(LISTING_HERO_WIDTH, LISTING_HERO_HEIGHT);
+    imagecopyresampled($target, $source, 0, 0, $cropX, $cropY, LISTING_HERO_WIDTH, LISTING_HERO_HEIGHT, $cropWidth, $cropHeight);
+    $saved = imagejpeg($target, $destination, 88);
+    imagedestroy($source);
+    imagedestroy($target);
+
+    return $saved;
+}
+
+function upload_listing_hero_image(int $propertyId, string $propertyName, array &$errors): bool
+{
+    if (!listing_has_upload('hero_image_upload')) {
+        return false;
+    }
+
+    if (!is_dir(UPLOAD_DIR)) {
+        mkdir(UPLOAD_DIR, 0755, true);
+    }
+
+    $tmpName = (string) $_FILES['hero_image_upload']['tmp_name'];
+    $mime = listing_upload_finfo()->file($tmpName);
+    $fileName = slugify($propertyName) . '-hero-' . bin2hex(random_bytes(5)) . '.jpg';
+    $destination = rtrim(UPLOAD_DIR, '/\\') . DIRECTORY_SEPARATOR . $fileName;
+
+    if (!save_listing_hero_crop($tmpName, $destination, $mime)) {
+        $errors[] = 'Hero image could not be cropped and saved.';
+        return false;
+    }
+
+    add_property_image($propertyId, rtrim(UPLOAD_URL, '/\\') . '/' . $fileName, $propertyName, true);
+    return true;
 }
 
 function upload_listing_images(int $propertyId, string $propertyName, bool $makeFirstHero): void
@@ -27,12 +192,8 @@ function upload_listing_images(int $propertyId, string $propertyName, bool $make
         mkdir(UPLOAD_DIR, 0755, true);
     }
 
-    $allowed = [
-        'image/jpeg' => 'jpg',
-        'image/png' => 'png',
-        'image/webp' => 'webp',
-    ];
-    $finfo = new finfo(FILEINFO_MIME_TYPE);
+    $allowed = listing_allowed_image_types();
+    $finfo = listing_upload_finfo();
 
     foreach ($_FILES['images']['tmp_name'] as $index => $tmpName) {
         if ($_FILES['images']['error'][$index] !== UPLOAD_ERR_OK) {
@@ -70,6 +231,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($categoryId <= 0) {
         $errors[] = 'Category is required.';
     }
+    validate_listing_uploads($errors);
 
     if (!$errors) {
         $savedId = save_property([
@@ -92,7 +254,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'sort_order' => (int) ($_POST['sort_order'] ?? 0),
         ], split_lines((string) ($_POST['descriptions'] ?? '')), split_lines((string) ($_POST['features'] ?? '')), $propertyId);
 
-        upload_listing_images($savedId, $name, trim((string) ($_POST['hero_image'] ?? '')) === '');
+        $uploadedHero = upload_listing_hero_image($savedId, $name, $errors);
+        if (!$errors) {
+            upload_listing_images($savedId, $name, !$uploadedHero && trim((string) ($_POST['hero_image'] ?? '')) === '');
+        }
+
+        if ($errors) {
+            flash('Listing details were saved, but one or more images failed to upload.', 'danger');
+            redirect('property-edit.php?id=' . $savedId);
+        }
 
         flash('Listing saved.');
         redirect('property-edit.php?id=' . $savedId);
@@ -245,6 +415,12 @@ admin_header($property ? 'Edit Listing' : 'Add Listing');
   <div class="mb-3">
     <label for="hero_image">Hero Image Path</label>
     <input class="form-control" id="hero_image" name="hero_image" value="<?= e($form['hero_image']) ?>">
+    <div class="form-text">Use this only for an existing image path. A new hero upload below will replace it.</div>
+  </div>
+  <div class="mb-4">
+    <label for="hero_image_upload">Upload Hero Image</label>
+    <input class="form-control" type="file" id="hero_image_upload" name="hero_image_upload" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp">
+    <div class="form-text">Minimum <?= LISTING_HERO_MIN_WIDTH ?>x<?= LISTING_HERO_MIN_HEIGHT ?>px. The image will be center-cropped to <?= LISTING_HERO_WIDTH ?>x<?= LISTING_HERO_HEIGHT ?>px for the public hero placeholder.</div>
   </div>
   <div class="mb-4">
     <label for="images">Upload Images</label>
