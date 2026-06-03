@@ -9838,15 +9838,30 @@ countdown-section
   max-width: 908px;
   margin: 0 auto;
 }
+.testimonial-section .row + .row {
+  align-items: stretch;
+}
+.testimonial-section .row + .row > [class*="col-"] {
+  display: flex;
+}
+.testimonial-section .testimonial-block {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
 .testimonial-block .inner-box {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   gap: 0px;
   margin-bottom: 40px;
+}
+.testimonial-section .testimonial-block .inner-box {
+  width: 100%;
+  min-height: 100%;
 }
 @media (max-width: 767.98px) {
   .testimonial-block .inner-box {
@@ -9867,6 +9882,9 @@ countdown-section
       -ms-flex-pack: center;
           justify-content: center;
   padding: 20px 50px 45px;
+}
+.testimonial-section .testimonial-block .inner-box .content-box {
+  flex: 1 1 auto;
 }
 @media (max-width: 575.98px) {
   .testimonial-block .inner-box .content-box {
@@ -9901,6 +9919,9 @@ countdown-section
           justify-content: space-between;
   margin-top: 37px;
   padding-top: 27px;
+}
+.testimonial-section .testimonial-block .inner-box .content-box .info-box {
+  margin-top: auto;
 }
 .testimonial-block .inner-box .content-box .info-box .user-info .name {
   letter-spacing: -0.03em;
