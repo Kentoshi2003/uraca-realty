@@ -111,6 +111,7 @@ CREATE TABLE IF NOT EXISTS cms_sections (
 
 CREATE TABLE IF NOT EXISTS cms_services (
   id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  slug VARCHAR(190) NULL UNIQUE,
   title VARCHAR(180) NOT NULL,
   summary TEXT NULL,
   body TEXT NULL,
@@ -119,9 +120,11 @@ CREATE TABLE IF NOT EXISTS cms_services (
   detail_url VARCHAR(255) NULL,
   is_enabled TINYINT(1) NOT NULL DEFAULT 1,
   sort_order INT NOT NULL DEFAULT 0,
+  deleted_at TIMESTAMP NULL DEFAULT NULL,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  INDEX idx_cms_services_enabled_sort (is_enabled, sort_order)
+  INDEX idx_cms_services_enabled_sort (is_enabled, sort_order),
+  INDEX idx_cms_services_active_sort (deleted_at, is_enabled, sort_order)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS cms_testimonials (
@@ -134,9 +137,11 @@ CREATE TABLE IF NOT EXISTS cms_testimonials (
   rating TINYINT UNSIGNED NOT NULL DEFAULT 5,
   is_enabled TINYINT(1) NOT NULL DEFAULT 1,
   sort_order INT NOT NULL DEFAULT 0,
+  deleted_at TIMESTAMP NULL DEFAULT NULL,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  INDEX idx_cms_testimonials_enabled_sort (is_enabled, sort_order)
+  INDEX idx_cms_testimonials_enabled_sort (is_enabled, sort_order),
+  INDEX idx_cms_testimonials_active_sort (deleted_at, is_enabled, sort_order)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS cms_featured_listings (

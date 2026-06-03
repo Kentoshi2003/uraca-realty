@@ -9,7 +9,15 @@ require_once __DIR__ . '/layout.php';
 require_admin();
 
 $testimonialId = isset($_GET['id']) ? (int) $_GET['id'] : null;
-$testimonial = cms_testimonial($testimonialId);
+$status = (string) ($_GET['status'] ?? 'active');
+if (!in_array($status, ['active', 'archived', 'all'], true)) {
+    $status = 'active';
+}
+$testimonial = cms_testimonial($testimonialId, true);
+if ($testimonialId && !$testimonial) {
+    flash('Testimonial not found.', 'warning');
+    redirect('content-testimonials.php');
+}
 $errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -17,9 +25,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = (string) ($_POST['action'] ?? 'save');
     $id = $testimonialId;
 
-    if ($action === 'delete' && $id) {
+    if ($action === 'archive' && $id) {
         cms_delete_testimonial($id);
-        flash('Testimonial deleted.');
+        flash('Testimonial archived.');
+        redirect('content-testimonials.php?status=archived');
+    }
+
+    if ($action === 'restore' && $id) {
+        cms_restore_testimonial($id);
+        flash('Testimonial restored.');
         redirect('content-testimonials.php');
     }
 
@@ -28,6 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($uploaded) {
         $imagePath = $uploaded;
     }
+    $imagePath = admin_cms_validate_asset_path($imagePath, 'Image Path', $errors);
 
     $quote = trim((string) ($_POST['quote'] ?? ''));
     $clientName = trim((string) ($_POST['client_name'] ?? ''));
@@ -65,8 +80,17 @@ $form = array_merge([
     'rating' => 5,
     'is_enabled' => 1,
     'sort_order' => 0,
-], $testimonial ?: []);
-$testimonials = cms_testimonials(false);
+], $_SERVER['REQUEST_METHOD'] === 'POST' ? [
+    'headline' => trim((string) ($_POST['headline'] ?? '')),
+    'quote' => trim((string) ($_POST['quote'] ?? '')),
+    'client_name' => trim((string) ($_POST['client_name'] ?? '')),
+    'client_role' => trim((string) ($_POST['client_role'] ?? '')),
+    'image_path' => trim((string) ($_POST['image_path'] ?? '')),
+    'rating' => (int) ($_POST['rating'] ?? 5),
+    'is_enabled' => isset($_POST['is_enabled']) ? 1 : 0,
+    'sort_order' => (int) ($_POST['sort_order'] ?? 0),
+] : ($testimonial ?: []));
+$testimonials = cms_testimonials(false, $status);
 
 admin_header('Testimonials Content');
 ?>
@@ -93,6 +117,7 @@ admin_header('Testimonials Content');
     <div class="col-md-6 mb-3"><label>Client Role</label><input class="form-control" name="client_role" value="<?= e($form['client_role']) ?>"></div>
     <div class="col-md-8 mb-3"><label>Image Path</label><input class="form-control" name="image_path" value="<?= e($form['image_path']) ?>"></div>
     <div class="col-md-4 mb-3"><label>Upload Image</label><input class="form-control" type="file" name="image_upload" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"></div>
+    <div class="col-12"><?php admin_cms_image_preview($form['image_path'], $form['client_name']); ?></div>
     <div class="col-12 form-check mb-3"><input class="form-check-input" type="checkbox" id="is_enabled" name="is_enabled" <?= admin_checked($form['is_enabled']) ?>><label class="form-check-label" for="is_enabled">Published</label></div>
   </div>
   <div class="admin-actions mt-4">
@@ -105,6 +130,12 @@ admin_header('Testimonials Content');
     <div>
       <div class="admin-card__eyebrow">Existing</div>
       <h2 class="admin-card__title">Testimonials</h2>
+      <p class="admin-card__note">Archived testimonials are hidden from public pages until restored.</p>
+    </div>
+    <div class="admin-actions">
+      <a class="btn btn-sm <?= $status === 'active' ? 'btn-primary' : 'btn-outline-secondary' ?>" href="content-testimonials.php?status=active">Active</a>
+      <a class="btn btn-sm <?= $status === 'archived' ? 'btn-primary' : 'btn-outline-secondary' ?>" href="content-testimonials.php?status=archived">Archived</a>
+      <a class="btn btn-sm <?= $status === 'all' ? 'btn-primary' : 'btn-outline-secondary' ?>" href="content-testimonials.php?status=all">All</a>
     </div>
   </div>
   <div class="table-responsive">
@@ -119,7 +150,9 @@ admin_header('Testimonials Content');
             </td>
             <td><?= e($item['headline']) ?></td>
             <td>
-              <?php if ((int) $item['is_enabled'] === 1): ?>
+              <?php if (!empty($item['deleted_at'])): ?>
+                <span class="admin-pill admin-pill--draft"><i class="fa-solid fa-box-archive me-1"></i> Archived</span>
+              <?php elseif ((int) $item['is_enabled'] === 1): ?>
                 <span class="admin-pill admin-pill--published"><i class="fa-solid fa-circle-check me-1"></i> Published</span>
               <?php else: ?>
                 <span class="admin-pill admin-pill--draft"><i class="fa-solid fa-eye-slash me-1"></i> Hidden</span>
@@ -128,10 +161,10 @@ admin_header('Testimonials Content');
             <td class="text-end">
               <div class="admin-row-actions">
                 <a class="btn btn-sm btn-primary" href="content-testimonials.php?id=<?= (int) $item['id'] ?>"><i class="fa-solid fa-pen"></i> Edit</a>
-                <form method="post" onsubmit="return confirm('Delete this testimonial?');">
+                <form method="post" onsubmit="return confirm('<?= empty($item['deleted_at']) ? 'Archive this testimonial?' : 'Restore this testimonial?' ?>');">
                   <input type="hidden" name="csrf_token" value="<?= e(csrf_token()) ?>">
-                  <input type="hidden" name="action" value="delete">
-                  <button class="btn btn-sm btn-danger" formaction="content-testimonials.php?id=<?= (int) $item['id'] ?>" type="submit"><i class="fa-solid fa-trash"></i> Delete</button>
+                  <input type="hidden" name="action" value="<?= empty($item['deleted_at']) ? 'archive' : 'restore' ?>">
+                  <button class="btn btn-sm <?= empty($item['deleted_at']) ? 'btn-danger' : 'btn-success' ?>" formaction="content-testimonials.php?id=<?= (int) $item['id'] ?>" type="submit"><i class="fa-solid <?= empty($item['deleted_at']) ? 'fa-box-archive' : 'fa-rotate-left' ?>"></i> <?= empty($item['deleted_at']) ? 'Archive' : 'Restore' ?></button>
                 </form>
               </div>
             </td>

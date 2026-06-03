@@ -11,10 +11,11 @@ function cms_stars(int $rating): string
 function render_cms_service_cards(int $limit = 4): void
 {
     foreach (array_slice(cms_services(), 0, $limit) as $index => $service): ?>
+      <?php $detailUrl = !empty($service['slug']) ? 'page-service-details.php?service=' . rawurlencode((string) $service['slug']) : validate_public_url($service['detail_url'] ?: 'page-service-details.php', 'page-service-details.php'); ?>
       <div class="service-block-one">
         <div class="inner-block wow fadeInUp" data-wow-delay="<?= e((string) (($index + 1) * 200)) ?>ms">
           <div class="icon"><i class="<?= e($service['icon_class'] ?: 'flaticon-set-agreement') ?>"></i></div>
-          <div class="h5 title"><a href="<?= e(validate_public_url($service['detail_url'] ?: 'page-service-details.php', 'page-service-details.php')) ?>"><?= e($service['title']) ?></a></div>
+          <div class="h5 title"><a href="<?= e($detailUrl) ?>"><?= e($service['title']) ?></a></div>
           <div class="text"><?= e($service['summary']) ?></div>
         </div>
       </div>

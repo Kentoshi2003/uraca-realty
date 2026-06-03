@@ -391,6 +391,20 @@ function admin_header(string $title): void
       justify-content: flex-end;
       gap: 8px;
     }
+    .admin-image-preview {
+      width: 160px;
+      height: 110px;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #f6f7f9;
+    }
+    .admin-image-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
     
     /* Login Page Styling */
     .admin-login-page {

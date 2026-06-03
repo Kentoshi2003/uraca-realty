@@ -50,3 +50,49 @@ function admin_checked($value): string
 {
     return (int) $value === 1 ? 'checked' : '';
 }
+
+function admin_cms_validate_asset_path(?string $path, string $label, array &$errors, bool $required = false): string
+{
+    $path = trim((string) $path);
+    if ($path === '') {
+        if ($required) {
+            $errors[] = $label . ' is required.';
+        }
+        return '';
+    }
+
+    $validated = validate_asset_path($path, '');
+    if ($validated === '') {
+        $errors[] = $label . ' must be an image path under images/ or uploads/, or a valid HTTPS image URL.';
+    }
+
+    return $validated;
+}
+
+function admin_cms_validate_public_url(?string $url, string $label, array &$errors, string $fallback = '', bool $allowRelative = true): string
+{
+    $url = trim((string) $url);
+    if ($url === '') {
+        return $fallback;
+    }
+
+    $validated = validate_public_url($url, '', $allowRelative);
+    if ($validated === '') {
+        $errors[] = $label . ' must be a safe relative URL or an HTTPS/mail/tel URL.';
+    }
+
+    return $validated;
+}
+
+function admin_cms_image_preview(?string $path, string $alt = ''): void
+{
+    $path = validate_asset_path($path ?? '', '');
+    if ($path === '') {
+        return;
+    }
+    ?>
+    <div class="admin-image-preview mt-2">
+      <img src="../<?= e($path) ?>" alt="<?= e($alt) ?>">
+    </div>
+    <?php
+}

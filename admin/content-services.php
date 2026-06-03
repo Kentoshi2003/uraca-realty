@@ -9,7 +9,15 @@ require_once __DIR__ . '/layout.php';
 require_admin();
 
 $serviceId = isset($_GET['id']) ? (int) $_GET['id'] : null;
-$service = cms_service($serviceId);
+$status = (string) ($_GET['status'] ?? 'active');
+if (!in_array($status, ['active', 'archived', 'all'], true)) {
+    $status = 'active';
+}
+$service = cms_service($serviceId, true);
+if ($serviceId && !$service) {
+    flash('Service not found.', 'warning');
+    redirect('content-services.php');
+}
 $errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -17,9 +25,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = (string) ($_POST['action'] ?? 'save');
     $id = $serviceId;
 
-    if ($action === 'delete' && $id) {
+    if ($action === 'archive' && $id) {
         cms_delete_service($id);
-        flash('Service deleted.');
+        flash('Service archived.');
+        redirect('content-services.php?status=archived');
+    }
+
+    if ($action === 'restore' && $id) {
+        cms_restore_service($id);
+        flash('Service restored.');
         redirect('content-services.php');
     }
 
@@ -28,6 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($uploaded) {
         $imagePath = $uploaded;
     }
+    $imagePath = admin_cms_validate_asset_path($imagePath, 'Image Path', $errors);
+    $detailUrl = admin_cms_validate_public_url((string) ($_POST['detail_url'] ?? 'page-service-details.php'), 'Detail URL', $errors, 'page-service-details.php');
 
     $title = trim((string) ($_POST['title'] ?? ''));
     if ($title === '') {
@@ -41,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'body' => trim((string) ($_POST['body'] ?? '')),
         'icon_class' => trim((string) ($_POST['icon_class'] ?? '')),
         'image_path' => $imagePath,
-        'detail_url' => trim((string) ($_POST['detail_url'] ?? 'page-service-details.php')),
+        'detail_url' => $detailUrl,
         'is_enabled' => isset($_POST['is_enabled']) ? 1 : 0,
         'sort_order' => (int) ($_POST['sort_order'] ?? 0),
         ], $id ?: null);
@@ -61,8 +77,17 @@ $form = array_merge([
     'detail_url' => 'page-service-details.php',
     'is_enabled' => 1,
     'sort_order' => 0,
-], $service ?: []);
-$services = cms_services(false);
+], $_SERVER['REQUEST_METHOD'] === 'POST' ? [
+    'title' => trim((string) ($_POST['title'] ?? '')),
+    'summary' => trim((string) ($_POST['summary'] ?? '')),
+    'body' => trim((string) ($_POST['body'] ?? '')),
+    'icon_class' => trim((string) ($_POST['icon_class'] ?? '')),
+    'image_path' => trim((string) ($_POST['image_path'] ?? '')),
+    'detail_url' => trim((string) ($_POST['detail_url'] ?? 'page-service-details.php')),
+    'is_enabled' => isset($_POST['is_enabled']) ? 1 : 0,
+    'sort_order' => (int) ($_POST['sort_order'] ?? 0),
+] : ($service ?: []));
+$services = cms_services(false, $status);
 
 admin_header('Services Content');
 ?>
@@ -77,6 +102,9 @@ admin_header('Services Content');
     </div>
     <div class="admin-actions">
       <button class="btn btn-primary" type="submit"><i class="fa-solid fa-floppy-disk"></i> Save Service</button>
+      <?php if (!empty($form['slug']) && empty($form['deleted_at'])): ?>
+        <a class="btn btn-outline-secondary" href="../page-service-details.php?service=<?= e(rawurlencode((string) $form['slug'])) ?>" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Public</a>
+      <?php endif; ?>
       <a class="btn btn-outline-secondary" href="content-services.php"><i class="fa-solid fa-plus"></i> New</a>
       <a class="btn btn-outline-secondary" href="content.php"><i class="fa-solid fa-arrow-left-long"></i> Back</a>
     </div>
@@ -94,6 +122,7 @@ admin_header('Services Content');
     </div>
     <div class="col-md-8 mb-3"><label>Image Path</label><input class="form-control" name="image_path" value="<?= e($form['image_path']) ?>"></div>
     <div class="col-md-4 mb-3"><label>Upload Image</label><input class="form-control" type="file" name="image_upload" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"></div>
+    <div class="col-12"><?php admin_cms_image_preview($form['image_path'], $form['title']); ?></div>
   </div>
   <div class="admin-actions mt-4">
     <button class="btn btn-primary" type="submit"><i class="fa-solid fa-floppy-disk"></i> Save Service</button>
@@ -105,6 +134,12 @@ admin_header('Services Content');
     <div>
       <div class="admin-card__eyebrow">Existing</div>
       <h2 class="admin-card__title">Services</h2>
+      <p class="admin-card__note">Archived services are hidden from public pages until restored.</p>
+    </div>
+    <div class="admin-actions">
+      <a class="btn btn-sm <?= $status === 'active' ? 'btn-primary' : 'btn-outline-secondary' ?>" href="content-services.php?status=active">Active</a>
+      <a class="btn btn-sm <?= $status === 'archived' ? 'btn-primary' : 'btn-outline-secondary' ?>" href="content-services.php?status=archived">Archived</a>
+      <a class="btn btn-sm <?= $status === 'all' ? 'btn-primary' : 'btn-outline-secondary' ?>" href="content-services.php?status=all">All</a>
     </div>
   </div>
   <div class="table-responsive">
@@ -115,7 +150,9 @@ admin_header('Services Content');
           <tr>
             <td><strong><?= e($item['title']) ?></strong></td>
             <td>
-              <?php if ((int) $item['is_enabled'] === 1): ?>
+              <?php if (!empty($item['deleted_at'])): ?>
+                <span class="admin-pill admin-pill--draft"><i class="fa-solid fa-box-archive me-1"></i> Archived</span>
+              <?php elseif ((int) $item['is_enabled'] === 1): ?>
                 <span class="admin-pill admin-pill--published"><i class="fa-solid fa-circle-check me-1"></i> Published</span>
               <?php else: ?>
                 <span class="admin-pill admin-pill--draft"><i class="fa-solid fa-eye-slash me-1"></i> Hidden</span>
@@ -125,10 +162,13 @@ admin_header('Services Content');
             <td class="text-end">
               <div class="admin-row-actions">
                 <a class="btn btn-sm btn-primary" href="content-services.php?id=<?= (int) $item['id'] ?>"><i class="fa-solid fa-pen"></i> Edit</a>
-                <form method="post" onsubmit="return confirm('Delete this service?');">
+                <?php if (!empty($item['slug']) && empty($item['deleted_at'])): ?>
+                  <a class="btn btn-sm btn-outline-secondary" href="../page-service-details.php?service=<?= e(rawurlencode((string) $item['slug'])) ?>" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> View</a>
+                <?php endif; ?>
+                <form method="post" onsubmit="return confirm('<?= empty($item['deleted_at']) ? 'Archive this service?' : 'Restore this service?' ?>');">
                   <input type="hidden" name="csrf_token" value="<?= e(csrf_token()) ?>">
-                  <input type="hidden" name="action" value="delete">
-                  <button class="btn btn-sm btn-danger" formaction="content-services.php?id=<?= (int) $item['id'] ?>" type="submit"><i class="fa-solid fa-trash"></i> Delete</button>
+                  <input type="hidden" name="action" value="<?= empty($item['deleted_at']) ? 'archive' : 'restore' ?>">
+                  <button class="btn btn-sm <?= empty($item['deleted_at']) ? 'btn-danger' : 'btn-success' ?>" formaction="content-services.php?id=<?= (int) $item['id'] ?>" type="submit"><i class="fa-solid <?= empty($item['deleted_at']) ? 'fa-box-archive' : 'fa-rotate-left' ?>"></i> <?= empty($item['deleted_at']) ? 'Archive' : 'Restore' ?></button>
                 </form>
               </div>
             </td>

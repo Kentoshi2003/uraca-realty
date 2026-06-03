@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/../includes/bootstrap.php';
+require_once __DIR__ . '/../includes/admin-cms-helpers.php';
 require_once __DIR__ . '/layout.php';
 
 require_admin();
@@ -18,6 +19,7 @@ $fields = [
     'map_embed_url' => 'Google Map Embed URL',
     'newsletter_text' => 'Footer Newsletter Text',
 ];
+$errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     verify_csrf();
@@ -25,17 +27,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     foreach ($fields as $key => $label) {
         $settings[$key] = trim((string) ($_POST[$key] ?? ''));
     }
-    cms_save_settings($settings);
-    flash('Site settings saved.');
-    redirect('content-site.php');
+    if ($settings['email'] !== '' && !filter_var($settings['email'], FILTER_VALIDATE_EMAIL)) {
+        $errors[] = 'Email must be a valid email address.';
+    }
+    foreach (['facebook_url' => 'Facebook URL', 'whatsapp_url' => 'WhatsApp URL', 'instagram_url' => 'Instagram URL'] as $key => $label) {
+        admin_cms_validate_public_url($settings[$key], $label, $errors, '#', false);
+    }
+    if ($settings['map_embed_url'] !== '' && validate_embed_url($settings['map_embed_url'], '') === '') {
+        $errors[] = 'Google Map Embed URL must be a Google HTTPS embed URL.';
+    }
+    if (!$errors) {
+        cms_save_settings($settings);
+        flash('Site settings saved.');
+        redirect('content-site.php');
+    }
 }
 
-$settings = cms_settings();
+$settings = $errors ? $settings : cms_settings();
 
 admin_header('Site Settings');
 ?>
 <form class="admin-card" method="post">
   <input type="hidden" name="csrf_token" value="<?= e(csrf_token()) ?>">
+  <?php foreach ($errors as $error): ?><div class="alert alert-danger"><?= e($error) ?></div><?php endforeach; ?>
   <div class="admin-card__header">
     <div>
       <div class="admin-card__eyebrow">Global Content</div>
@@ -65,4 +79,3 @@ admin_header('Site Settings');
   </div>
 </form>
 <?php admin_footer(); ?>
-
