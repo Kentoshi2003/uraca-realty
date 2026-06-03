@@ -5,6 +5,7 @@ $aboutPage = cms_page('about');
 $aboutIntro = cms_section('about', 'about_intro');
 $aboutMission = cms_section('about', 'mission');
 $aboutVision = cms_section('about', 'vision');
+$testimonials = cms_testimonials();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -495,12 +496,12 @@ $aboutVision = cms_section('about', 'vision');
                     <div class="testimonial-block-two">
                       <div class="inner-box">
                         <div class="logo"><i class="fa-classic fas fa-quote-left"></i></div>
-                        <div class="text">From our very first visit, we knew this property was something special. The layout is spacious, the natural light fills every room, and the neighborhood feels both peaceful and well-connected. The entire buying process was smooth and transparent, and every detail was handled with care. We couldn’t be happier with our decision—this truly feels like home for our family.</div>
+                        <div class="text testimonial-cms-text"><?= e($testimonials[0]['quote'] ?? 'Uraca Realty helped our family compare homes around Davao City without pressure. Marylyn explained the documents clearly, scheduled viewings around our work hours, and guided us until we felt confident with our decision.') ?></div>
                         <div class="author-info">
-                          <div class="thumb"><img src="images/resource/testi-thumb1-1.png" alt=""></div>
+                          <div class="thumb"><img src="<?= e(validate_asset_path($testimonials[0]['image_path'] ?? '', 'images/resource/testimonial-ana.jpg')) ?>" alt="<?= e($testimonials[0]['client_name'] ?? 'Ana') ?>"></div>
                           <div class="info">
-                            <div class="h6 name">Emily Carter</div>
-                            <div class="designation">Project Manager</div>
+                            <div class="h6 name"><?= e($testimonials[0]['client_name'] ?? 'Ana') ?></div>
+                            <div class="designation"><?= e($testimonials[0]['client_role'] ?? 'First-time Home Buyer, Davao City') ?></div>
                           </div>
                         </div>
                       </div>
@@ -510,12 +511,12 @@ $aboutVision = cms_section('about', 'vision');
                     <div class="testimonial-block-two">
                       <div class="inner-box">
                         <div class="logo"><i class="fa-classic fas fa-quote-left"></i></div>
-                        <div class="text">Uraca Realty has been instrumental in expanding my rental property portfolio. Their deep understanding of the local market in Davao City and Samal Island helped me secure properties with high appreciation potential. The documentation and title transfer processes were handled with absolute professionalism and speed.</div>
+                        <div class="text testimonial-cms-text"><?= e($testimonials[1]['quote'] ?? 'We wanted to sell our property in Buhangin but were unsure about pricing and buyer screening. Uraca Realty gave practical market advice, handled inquiries professionally, and helped us move forward with a serious buyer.') ?></div>
                         <div class="author-info">
-                          <div class="thumb"><img src="images/resource/testi-thumb1-2.png" alt=""></div>
+                          <div class="thumb"><img src="<?= e(validate_asset_path($testimonials[1]['image_path'] ?? '', 'images/resource/testimonial-ramon.jpg')) ?>" alt="<?= e($testimonials[1]['client_name'] ?? 'Ramon') ?>"></div>
                           <div class="info">
-                            <div class="h6 name">Marcus Vance</div>
-                            <div class="designation">Real Estate Investor</div>
+                            <div class="h6 name"><?= e($testimonials[1]['client_name'] ?? 'Ramon') ?></div>
+                            <div class="designation"><?= e($testimonials[1]['client_role'] ?? 'Property Seller, Buhangin') ?></div>
                           </div>
                         </div>
                       </div>
