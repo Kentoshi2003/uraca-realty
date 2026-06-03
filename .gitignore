@@ -8,5 +8,6 @@ uploads/*
 
 *.log
 *.tmp
+database/*_deploy.sql
 Thumbs.db
 .DS_Store
