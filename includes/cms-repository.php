@@ -84,8 +84,8 @@ function cms_default_services(): array
 function cms_default_testimonials(): array
 {
     return [
-        ['Highly professional and dedicated service', 'Uraca Realty made buying our first home in Davao a seamless experience. Marylyn was incredibly patient, showing us multiple properties that fit our criteria and explaining every document clearly. We could not be happier!', 'Emily Carter', 'First-time Homeowner', 'images/resource/testimonial1-1.jpg', 5, 1, 10],
-        ['Expert market guidance and insights', 'Selling our property was stressful until we partnered with Uraca Realty. They provided clear pricing guidance, handled inquiries professionally, and secured a buyer much faster than we anticipated. Highly recommended!', 'Marcus Vance', 'Property Seller', 'images/resource/testimonial1-2.jpg', 5, 1, 20],
+        ['Warm, patient guidance from inquiry to turnover', 'Uraca Realty helped our family compare homes around Davao City without pressure. Marylyn explained the documents clearly, scheduled viewings around our work hours, and guided us until we felt confident with our decision.', 'Ana', 'First-time Home Buyer, Davao City', 'images/resource/testimonial1-1.jpg', 5, 1, 10],
+        ['Local market advice that made the sale smoother', 'We wanted to sell our property in Buhangin but were unsure about pricing and buyer screening. Uraca Realty gave practical market advice, handled inquiries professionally, and helped us move forward with a serious buyer.', 'Ramon', 'Property Seller, Buhangin', 'images/resource/testimonial1-2.jpg', 5, 1, 20],
     ];
 }
 
