@@ -405,6 +405,56 @@ function admin_header(string $title): void
       object-fit: cover;
       display: block;
     }
+    .featured-slot-preview {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .featured-slot-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-height: 100px;
+      padding: 16px;
+      border: 1px solid rgba(17, 17, 17, 0.08);
+      border-radius: 14px;
+      background: #faf7f2;
+    }
+    .featured-slot-card__rank {
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      width: 54px;
+      height: 54px;
+      border-radius: 12px;
+      background: var(--uraca-brown);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      text-align: center;
+      text-transform: uppercase;
+      line-height: 1.15;
+    }
+    .featured-slot-card__body {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      min-width: 0;
+    }
+    .featured-slot-card__body strong {
+      color: var(--uraca-ink);
+      font-size: 14px;
+      line-height: 1.35;
+    }
+    .featured-slot-card__body span:not(.admin-pill) {
+      color: var(--uraca-muted);
+      font-size: 12px;
+    }
+    .featured-slot-card__empty {
+      color: var(--uraca-muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
     
     /* Login Page Styling */
     .admin-login-page {
@@ -644,6 +694,9 @@ function admin_header(string $title): void
       }
       .admin-card {
         padding: 20px;
+      }
+      .featured-slot-preview {
+        grid-template-columns: 1fr;
       }
     }
   </style>

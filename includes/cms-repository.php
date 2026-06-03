@@ -97,9 +97,11 @@ function cms_table_ready(string $table): bool
     }
 
     try {
-        $stmt = db()->prepare('SHOW TABLES LIKE :table_name');
+        $stmt = db()->prepare('SELECT COUNT(*)
+            FROM INFORMATION_SCHEMA.TABLES
+            WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = :table_name');
         $stmt->execute(['table_name' => $table]);
-        $ready[$table] = (bool) $stmt->fetchColumn();
+        $ready[$table] = (int) $stmt->fetchColumn() > 0;
     } catch (Throwable) {
         $ready[$table] = false;
     }
