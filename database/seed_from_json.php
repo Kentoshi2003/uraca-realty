@@ -90,7 +90,10 @@ try {
     }
 
     $adminEmail = getenv('URACA_ADMIN_EMAIL') ?: 'admin@uracarealtyph.com';
-    $adminPassword = getenv('URACA_ADMIN_PASSWORD') ?: 'ChangeMeNow!2026';
+    $adminPassword = getenv('URACA_ADMIN_PASSWORD');
+    if (!is_string($adminPassword) || $adminPassword === '') {
+        $adminPassword = bin2hex(random_bytes(12));
+    }
     $adminStmt = $pdo->prepare('INSERT INTO admins (name, email, password_hash)
         VALUES (:name, :email, :password_hash)
         ON DUPLICATE KEY UPDATE name = VALUES(name)');
@@ -105,7 +108,7 @@ try {
     $pdo->commit();
     echo "Imported listings, CMS defaults, and admin user.\n";
     echo "Admin email: {$adminEmail}\n";
-    echo "Default password: {$adminPassword}\n";
+    echo "Admin password: {$adminPassword}\n";
     echo "Change this password immediately after first login.\n";
 } catch (Throwable $exception) {
     $pdo->rollBack();

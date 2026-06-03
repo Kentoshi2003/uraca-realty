@@ -11,5 +11,6 @@ uploads/*
 database/*_deploy.sql
 database/uraca_realty.sql
 .cpanel-db-credentials.txt
+.cpanel-admin-credentials.txt
 Thumbs.db
 .DS_Store

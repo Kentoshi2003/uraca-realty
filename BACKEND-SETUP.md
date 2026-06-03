@@ -12,8 +12,8 @@
 ## Admin Login
 - URL: `/admin/login.php`
 - Seeded email: `admin@uracarealtyph.com`
-- Seeded password: `ChangeMeNow!2026`
-- Change the password immediately after the first production login.
+- The seed script generates a password when `URACA_ADMIN_PASSWORD` is not provided.
+- Set `URACA_ADMIN_PASSWORD` before production seeding, then rotate the password after first login.
 
 ## Deployment Notes
 - Keep `config/`, `database/`, `data/`, `storage/`, and `uploads/` protected from script execution or direct browsing.
