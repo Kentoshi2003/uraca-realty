@@ -1,0 +1,468 @@
+{
+  "categories": [
+    {
+      "slug": "house-and-lot",
+      "name": "House and Lot",
+      "description": "Browse ready-for-occupancy and pre-selling homes ideal for families, investors, and first-time buyers in key Davao locations.",
+      "heroImage": "images/Categories/House and Lot.png",
+      "pageUrl": "page-house-and-lot.php"
+    },
+    {
+      "slug": "prime-lots",
+      "name": "Prime Lots",
+      "description": "Explore residential and commercial lots with strong long-term value, strategic access, and excellent development potential.",
+      "heroImage": "images/Categories/Prime Lots.png",
+      "pageUrl": "page-prime-lots.php"
+    },
+    {
+      "slug": "rentals",
+      "name": "Rentals",
+      "description": "Find move-in-ready condos, townhouses, and family homes for short-term or long-term rental around Davao City.",
+      "heroImage": "images/Categories/Rentals.png",
+      "pageUrl": "page-rentals.php"
+    },
+    {
+      "slug": "construction",
+      "name": "Construction",
+      "description": "Showcase design-and-build opportunities, build packages, and custom construction projects for residential investors and homeowners.",
+      "heroImage": "images/Categories/Construction.png",
+      "pageUrl": "page-construction.php"
+    }
+  ],
+  "properties": [
+    {
+      "id": "luxury-house-ladislawa-davao",
+      "category": "house-and-lot",
+      "name": "Luxury House & Lot - Ladislawa, Davao City",
+      "price": "PHP 60,000,000",
+      "status": "For Sale | Clean Title",
+      "location": "Ladislawa, Davao City",
+      "summary": "A spacious luxury residence in Ladislawa with generous indoor living spaces, private family areas, and premium support rooms for comfortable upscale living.",
+      "description": [
+        "This luxury house and lot in Ladislawa offers an expansive residential layout for families who need both comfort and functionality. The second floor includes 3 bedrooms, 3 toilet and bath areas, a master bedroom with walk-in closet, a private bathroom with bathtub, and a family area with open balcony.",
+        "On the ground floor, the property features a guest room with its own CR, a library room, powder room, spacious living area, dining area, kitchen area, pantry, and a maid's room with its own CR. Additional improvements include a driver's room outside, a 2-car carport, and a gazebo with powder room."
+      ],
+      "features": [
+        "3 bedrooms on the second floor",
+        "3 toilet and bath upstairs",
+        "Master bedroom with walk-in closet and bathtub",
+        "Family area with open balcony",
+        "Guest room with own CR",
+        "Library room and powder room",
+        "Spacious living, dining, kitchen, and pantry",
+        "Maid's room with own CR",
+        "Driver's room outside",
+        "2-car carport",
+        "Gazebo with powder room"
+      ],
+      "bedrooms": "4 Bedrooms",
+      "bathrooms": "4+ Toilet & Bath",
+      "parking": "2-Car Carport",
+      "lotArea": "602 sqm",
+      "floorArea": "Approx. 500 sqm",
+      "updatedAt": "Updated April 2026",
+      "contactName": "Marylyn Grace Uraca",
+      "contactPhone": "+63 9185305683",
+      "heroImage": "images/Listings/Ladislawa, Davao City/1.jpg",
+      "gallery": [
+        "images/Listings/Ladislawa, Davao City/2.jpg",
+        "images/Listings/Ladislawa, Davao City/3.jpg",
+        "images/Listings/Ladislawa, Davao City/4.jpg",
+        "images/Listings/Ladislawa, Davao City/5.jpg",
+        "images/Listings/Ladislawa, Davao City/6.jpg",
+        "images/Listings/Ladislawa, Davao City/7.jpg",
+        "images/Listings/Ladislawa, Davao City/8.jpg",
+        "images/Listings/Ladislawa, Davao City/9.jpg",
+        "images/Listings/Ladislawa, Davao City/10.jpg",
+        "images/Listings/Ladislawa, Davao City/11.jpg",
+        "images/Listings/Ladislawa, Davao City/12.jpg",
+        "images/Listings/Ladislawa, Davao City/13.jpg"
+      ]
+    },
+    {
+      "id": "newly-built-house-ilumina-buhangin",
+      "category": "house-and-lot",
+      "name": "Newly Built House - Ilumina Buhangin, Davao City",
+      "price": "PHP 20,500,000",
+      "status": "Brand New | Ready for Occupancy",
+      "location": "Ilumina, Buhangin, Davao City",
+      "summary": "A newly built modern home in Ilumina, Buhangin featuring 5 bedrooms, custom storage, inverter air-conditioning, and smart utility provisions.",
+      "description": [
+        "This brand-new home in Ilumina, Buhangin is ready for occupancy and built for buyers who want modern finishes with practical daily-use features. The layout includes 5 bedrooms, 4 toilet and bath areas with multipoint heater, a 2-car garage, and 1 stock room.",
+        "Interior highlights include modular kitchen cabinets with under-cabinet lighting, a kitchen island with drawers, moisture-resistant room cabinets, designed lighting setup, and a laundry area with washing machine provision. Utilities and extras include a water tank, anti-termite pipe provision, and an easy-access plumbing layout."
+      ],
+      "features": [
+        "5 bedrooms",
+        "4 toilet and bath with multipoint heater",
+        "2-car garage",
+        "1 stock room",
+        "6 split-type inverter aircons",
+        "Modular kitchen cabinets with under-cabinet lighting",
+        "Kitchen island with drawers",
+        "Moisture-resistant room cabinets",
+        "Designed lighting setup",
+        "Laundry area with washing machine provision",
+        "Water tank",
+        "Anti-termite pipe provision",
+        "Easy-access plumbing layout"
+      ],
+      "bedrooms": "5 Bedrooms",
+      "bathrooms": "4 Toilet & Bath",
+      "parking": "2-Car Garage",
+      "lotArea": "184 sqm",
+      "floorArea": "266.05 sqm",
+      "updatedAt": "Updated April 2026",
+      "contactName": "Marylyn Grace Uraca",
+      "contactPhone": "+63 9185305683",
+      "heroImage": "images/Listings/Ilumina, Buhangin, Davao City/1.jpg",
+      "gallery": [
+        "images/Listings/Ilumina, Buhangin, Davao City/2.jpg",
+        "images/Listings/Ilumina, Buhangin, Davao City/3.jpg",
+        "images/Listings/Ilumina, Buhangin, Davao City/4.jpg",
+        "images/Listings/Ilumina, Buhangin, Davao City/5.jpg",
+        "images/Listings/Ilumina, Buhangin, Davao City/6.jpg",
+        "images/Listings/Ilumina, Buhangin, Davao City/7.jpg",
+        "images/Listings/Ilumina, Buhangin, Davao City/8.jpg",
+        "images/Listings/Ilumina, Buhangin, Davao City/9.jpg",
+        "images/Listings/Ilumina, Buhangin, Davao City/10.jpg",
+        "images/Listings/Ilumina, Buhangin, Davao City/11.jpg",
+        "images/Listings/Ilumina, Buhangin, Davao City/12.jpg",
+        "images/Listings/Ilumina, Buhangin, Davao City/13.jpg"
+      ]
+    },
+    {
+      "id": "multi-house-property-juna-subdivision-matina",
+      "category": "house-and-lot",
+      "name": "Multi-House Property - Juna Subdivision, Matina",
+      "price": "PHP 32,000,000 Net",
+      "status": "Clean Title | Ready to Transfer",
+      "location": "Juna Subdivision, Matina, Davao City",
+      "summary": "A multi-unit property in Juna Subdivision with a main house, second unit, and back house, positioned near SM Ecoland and key commercial areas.",
+      "description": [
+        "This multi-house property in Juna Subdivision is ideal for buyers seeking a flexible residential compound, multi-family setup, or investment property. The main house includes 3 bedrooms, a master bedroom with its own bathroom, 2 bedrooms with shared CR, a living area, and an indoor kitchen.",
+        "The second unit has an auxiliary kitchen and its own bathroom, while the back house includes 2 bedrooms, a shared kitchen, and an external CR. Additional features include a 2 to 3 car garage, laundry area, walking distance to SM Ecoland and nearby commercial establishments, and easy access to the main road."
+      ],
+      "features": [
+        "Main house with 3 bedrooms",
+        "Master bedroom with own bathroom",
+        "2 bedrooms with shared CR",
+        "Living area and indoor kitchen",
+        "Second unit with auxiliary kitchen and own bathroom",
+        "Back house with 2 bedrooms",
+        "Shared kitchen and external CR in back house",
+        "2 to 3 car garage",
+        "Laundry area",
+        "Walking distance to SM Ecoland",
+        "Near commercial establishments and main road"
+      ],
+      "bedrooms": "5 Bedrooms",
+      "bathrooms": "Multiple Bathrooms",
+      "parking": "2-3 Car Garage",
+      "lotArea": "438 sqm",
+      "floorArea": "Approx. 250 sqm",
+      "updatedAt": "Updated April 2026",
+      "contactName": "Marylyn Grace Uraca",
+      "contactPhone": "+63 9185305683",
+      "heroImage": "images/Listings/Juna Subdivision, Matina, Davao City/1.jpg",
+      "gallery": [
+        "images/Listings/Juna Subdivision, Matina, Davao City/2.jpg",
+        "images/Listings/Juna Subdivision, Matina, Davao City/3.jpg",
+        "images/Listings/Juna Subdivision, Matina, Davao City/4.jpg",
+        "images/Listings/Juna Subdivision, Matina, Davao City/5.jpg",
+        "images/Listings/Juna Subdivision, Matina, Davao City/6.jpg",
+        "images/Listings/Juna Subdivision, Matina, Davao City/7.jpg",
+        "images/Listings/Juna Subdivision, Matina, Davao City/8.jpg",
+        "images/Listings/Juna Subdivision, Matina, Davao City/9.jpg",
+        "images/Listings/Juna Subdivision, Matina, Davao City/10.jpg",
+        "images/Listings/Juna Subdivision, Matina, Davao City/11.jpg",
+        "images/Listings/Juna Subdivision, Matina, Davao City/12.jpg",
+        "images/Listings/Juna Subdivision, Matina, Davao City/13.jpg"
+      ]
+    },
+    {
+      "id": "brand-new-bungalow-santiago-villas-catalunan-grande",
+      "category": "house-and-lot",
+      "name": "Brand New Bungalow - Santiago Villas, Catalunan Grande",
+      "price": "PHP 4,900,000",
+      "status": "Ready for Occupancy | Clean Title",
+      "location": "Santiago Villas, Catalunan Grande, Davao City",
+      "summary": "A brand-new bungalow on a corner lot inside a gated and guarded community with easy downtown access and financing options available.",
+      "description": [
+        "This ready-for-occupancy bungalow in Santiago Villas, Catalunan Grande is suited for buyers looking for an affordable and practical family home inside a secure subdivision. The layout includes 3 bedrooms, 2 toilet and bath areas, and a covered car garage.",
+        "The property sits on a corner lot within a gated and guarded subdivision in a flood-free high-elevation area. It offers an accessible location with one ride to downtown, and payment can be arranged through spot cash or bank financing."
+      ],
+      "features": [
+        "3 bedrooms",
+        "2 toilet and bath",
+        "Covered car garage",
+        "Corner lot",
+        "Gated and guarded subdivision",
+        "Flood-free high-elevation area",
+        "Accessible location",
+        "1 ride to downtown",
+        "Spot cash accepted",
+        "Bank financing available"
+      ],
+      "bedrooms": "3 Bedrooms",
+      "bathrooms": "2 Toilet & Bath",
+      "parking": "Covered Car Garage",
+      "lotArea": "103 sqm",
+      "floorArea": "72 sqm",
+      "updatedAt": "Updated April 2026",
+      "contactName": "Marylyn Grace Uraca",
+      "contactPhone": "+63 9185305683",
+      "heroImage": "images/Listings/Santiago Villas, Catalunan Grande, Davao City/1.jpg",
+      "gallery": [
+        "images/Listings/Santiago Villas, Catalunan Grande, Davao City/2.jpg",
+        "images/Listings/Santiago Villas, Catalunan Grande, Davao City/3.jpg",
+        "images/Listings/Santiago Villas, Catalunan Grande, Davao City/4.jpg",
+        "images/Listings/Santiago Villas, Catalunan Grande, Davao City/5.jpg",
+        "images/Listings/Santiago Villas, Catalunan Grande, Davao City/6.jpg",
+        "images/Listings/Santiago Villas, Catalunan Grande, Davao City/7.jpg",
+        "images/Listings/Santiago Villas, Catalunan Grande, Davao City/8.jpg",
+        "images/Listings/Santiago Villas, Catalunan Grande, Davao City/9.jpg",
+        "images/Listings/Santiago Villas, Catalunan Grande, Davao City/10.jpg",
+        "images/Listings/Santiago Villas, Catalunan Grande, Davao City/11.jpg",
+        "images/Listings/Santiago Villas, Catalunan Grande, Davao City/12.jpg",
+        "images/Listings/Santiago Villas, Catalunan Grande, Davao City/13.jpg"
+      ]
+    },
+    {
+      "id": "samal-view-estate-lot",
+      "category": "prime-lots",
+      "name": "Samal View Estate Lot",
+      "price": "PHP 18,000 per sqm",
+      "status": "For Sale",
+      "location": "Panacan, Davao City",
+      "summary": "A premium residential lot in a fast-appreciating area with city access and excellent long-term investment appeal.",
+      "description": [
+        "Samal View Estate Lot is positioned for buyers who want to secure land in a strategic location before further area appreciation. The property works well for future residential development or land banking.",
+        "Its location gives convenient access to transport routes while maintaining a neighborhood character suitable for upscale home construction."
+      ],
+      "features": [
+        "Flat and build-ready lot",
+        "Good frontage and road access",
+        "Strong residential investment potential",
+        "Ideal for custom home development"
+      ],
+      "lotArea": "240 sqm",
+      "updatedAt": "Updated April 2026",
+      "contactName": "Marylyn Grace Uraca",
+      "contactPhone": "+63 9185305683",
+      "heroImage": "images/resource/project1-2.jpg",
+      "gallery": [
+        "images/resource/project1-2.jpg",
+        "images/resource/gallery-4.jpg",
+        "images/resource/gallery-5.jpg",
+        "images/resource/gallery-6.jpg",
+        "images/resource/project1-1.jpg",
+        "images/resource/project1-3.jpg",
+        "images/resource/project2-1.jpg",
+        "images/resource/project2-2.jpg",
+        "images/resource/gallery-1.jpg",
+        "images/resource/gallery-2.jpg",
+        "images/resource/gallery-3.jpg",
+        "images/resource/news-details.jpg"
+      ]
+    },
+    {
+      "id": "mintal-corner-commercial-lot",
+      "category": "prime-lots",
+      "name": "Mintal Corner Commercial Lot",
+      "price": "PHP 25,000 per sqm",
+      "status": "For Sale",
+      "location": "Mintal, Davao City",
+      "summary": "A corner lot suited for mixed-use development, showroom space, or a future rental-income property.",
+      "description": [
+        "Mintal Corner Commercial Lot offers strong road visibility and flexibility for business or mixed-use planning. Its corner positioning improves access, frontage, and future development options.",
+        "For investors looking at long-term commercial potential, this lot gives a solid entry point in a growing district with active local demand."
+      ],
+      "features": [
+        "Corner-lot advantage",
+        "High visibility location",
+        "Suitable for mixed-use development",
+        "Strong future rental potential"
+      ],
+      "lotArea": "320 sqm",
+      "updatedAt": "Updated April 2026",
+      "contactName": "Marylyn Grace Uraca",
+      "contactPhone": "+63 9185305683",
+      "heroImage": "images/resource/gallery-6.jpg",
+      "gallery": [
+        "images/resource/gallery-6.jpg",
+        "images/resource/project1-2.jpg",
+        "images/resource/gallery-1.jpg",
+        "images/resource/gallery-2.jpg",
+        "images/resource/gallery-3.jpg",
+        "images/resource/gallery-4.jpg",
+        "images/resource/gallery-5.jpg",
+        "images/resource/project1-1.jpg",
+        "images/resource/project1-3.jpg",
+        "images/resource/project2-1.jpg",
+        "images/resource/project2-2.jpg",
+        "images/resource/news-details.jpg"
+      ]
+    },
+    {
+      "id": "elev8-furnished-condo",
+      "category": "rentals",
+      "name": "Elev8 Furnished Condo",
+      "price": "PHP 28,000 / month",
+      "status": "For Rent",
+      "location": "Downtown Davao City",
+      "summary": "A furnished condo unit for professionals and small families who want a central address and flexible move-in setup.",
+      "description": [
+        "Elev8 Furnished Condo is ready for immediate occupancy, with basic furnishing already in place for a smoother move-in process. It suits tenants who want convenience near offices, malls, and dining areas.",
+        "The unit layout is efficient and bright, making it a practical choice for long-term city living or executive accommodation."
+      ],
+      "features": [
+        "Fully furnished setup",
+        "1 bedroom and 1 bathroom",
+        "Building amenities access",
+        "Central city location"
+      ],
+      "bedrooms": "1 Bedroom",
+      "bathrooms": "1 Bathroom",
+      "floorArea": "34 sqm",
+      "updatedAt": "Updated April 2026",
+      "contactName": "Marylyn Grace Uraca",
+      "contactPhone": "+63 9185305683",
+      "heroImage": "images/resource/project1-3.jpg",
+      "gallery": [
+        "images/resource/project1-3.jpg",
+        "images/resource/news-details.jpg",
+        "images/resource/gallery-2.jpg",
+        "images/resource/gallery-1.jpg",
+        "images/resource/gallery-3.jpg",
+        "images/resource/gallery-4.jpg",
+        "images/resource/gallery-5.jpg",
+        "images/resource/gallery-6.jpg",
+        "images/resource/project1-1.jpg",
+        "images/resource/project1-2.jpg",
+        "images/resource/project2-1.jpg",
+        "images/resource/project2-2.jpg"
+      ]
+    },
+    {
+      "id": "lanang-family-townhouse-rental",
+      "category": "rentals",
+      "name": "Lanang Family Townhouse Rental",
+      "price": "PHP 45,000 / month",
+      "status": "For Rent",
+      "location": "Lanang, Davao City",
+      "summary": "A spacious townhouse rental with multiple rooms, ideal for families who want comfort and access to key business districts.",
+      "description": [
+        "Lanang Family Townhouse Rental offers more space than a condo, making it a strong fit for families or company housing requirements. It includes flexible living areas and a functional kitchen setup.",
+        "Its Lanang location provides quick access to commercial centers, schools, and major transport routes while preserving residential privacy."
+      ],
+      "features": [
+        "3 bedrooms and 3 bathrooms",
+        "Private parking space",
+        "Family-friendly layout",
+        "Near Lanang business hubs"
+      ],
+      "bedrooms": "3 Bedrooms",
+      "bathrooms": "3 Bathrooms",
+      "parking": "1 Parking Slot",
+      "floorArea": "118 sqm",
+      "updatedAt": "Updated April 2026",
+      "contactName": "Marylyn Grace Uraca",
+      "contactPhone": "+63 9185305683",
+      "heroImage": "images/resource/gallery-3.jpg",
+      "gallery": [
+        "images/resource/gallery-3.jpg",
+        "images/resource/gallery-4.jpg",
+        "images/resource/project2-2.jpg",
+        "images/resource/gallery-5.jpg",
+        "images/resource/gallery-6.jpg",
+        "images/resource/project1-1.jpg",
+        "images/resource/project1-2.jpg",
+        "images/resource/project1-3.jpg",
+        "images/resource/project2-1.jpg",
+        "images/resource/gallery-1.jpg",
+        "images/resource/gallery-2.jpg",
+        "images/resource/news-details.jpg"
+      ]
+    },
+    {
+      "id": "buhangin-modern-build-package",
+      "category": "construction",
+      "name": "Buhangin Modern Build Package",
+      "price": "Starting at PHP 3,200,000",
+      "status": "Open for Build",
+      "location": "Buhangin, Davao City",
+      "summary": "A modern residential design-and-build package for clients who already own land and want a guided construction process.",
+      "description": [
+        "Buhangin Modern Build Package is built for landowners who want a clearer path from concept to turnover. The package can include design consultation, budgeting, construction coordination, and finishing guidance.",
+        "This setup helps clients move faster while keeping design quality and build planning aligned with their target budget and lot conditions."
+      ],
+      "features": [
+        "Design-and-build package",
+        "Ideal for owned residential lots",
+        "Modern facade concept",
+        "Managed project coordination"
+      ],
+      "bedrooms": "3 Bedrooms",
+      "bathrooms": "2 Bathrooms",
+      "floorArea": "85 sqm",
+      "updatedAt": "Updated April 2026",
+      "contactName": "Marylyn Grace Uraca",
+      "contactPhone": "+63 9185305683",
+      "heroImage": "images/resource/project2-1.jpg",
+      "gallery": [
+        "images/resource/project2-1.jpg",
+        "images/resource/service-d1.jpg",
+        "images/resource/floor-1.jpg",
+        "images/resource/project2-2.jpg",
+        "images/resource/service-d2.jpg",
+        "images/resource/project1-1.jpg",
+        "images/resource/project1-2.jpg",
+        "images/resource/project1-3.jpg",
+        "images/resource/gallery-1.jpg",
+        "images/resource/gallery-2.jpg",
+        "images/resource/gallery-3.jpg",
+        "images/resource/gallery-4.jpg"
+      ]
+    },
+    {
+      "id": "toril-duplex-construction-package",
+      "category": "construction",
+      "name": "Toril Duplex Construction Package",
+      "price": "Starting at PHP 4,900,000",
+      "status": "Open for Build",
+      "location": "Toril, Davao City",
+      "summary": "A duplex-focused construction package for investors planning rental income, multi-family use, or phased property development.",
+      "description": [
+        "Toril Duplex Construction Package is structured for clients who want to maximize land use through a two-unit residential concept. It can suit owner-occupiers, extended families, or investors planning rental returns.",
+        "The package emphasizes efficient planning, practical unit division, and a build approach that supports future occupancy or leasing goals."
+      ],
+      "features": [
+        "Duplex-oriented layout",
+        "Investment-friendly concept",
+        "Good fit for rental strategy",
+        "Guided planning and construction"
+      ],
+      "bedrooms": "4 Bedrooms",
+      "bathrooms": "4 Bathrooms",
+      "floorArea": "132 sqm",
+      "updatedAt": "Updated April 2026",
+      "contactName": "Marylyn Grace Uraca",
+      "contactPhone": "+63 9185305683",
+      "heroImage": "images/resource/service-d2.jpg",
+      "gallery": [
+        "images/resource/service-d2.jpg",
+        "images/resource/flooe-1.png",
+        "images/resource/project2-2.jpg",
+        "images/resource/service-d1.jpg",
+        "images/resource/floor-1.jpg",
+        "images/resource/project2-1.jpg",
+        "images/resource/project1-1.jpg",
+        "images/resource/project1-2.jpg",
+        "images/resource/project1-3.jpg",
+        "images/resource/gallery-4.jpg",
+        "images/resource/gallery-5.jpg",
+        "images/resource/gallery-6.jpg"
+      ]
+    }
+  ]
+}

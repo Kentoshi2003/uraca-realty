@@ -1,0 +1,16 @@
+DirectoryIndex index.php
+
+RewriteEngine On
+
+RewriteRule ^index\.html$ /index.php [R=301,L]
+RewriteRule ^page-404\.html$ /page-404.php [R=301,L]
+RewriteRule ^page-about\.html$ /page-about.php [R=301,L]
+RewriteRule ^page-contact\.html$ /page-contact.php [R=301,L]
+RewriteRule ^page-services\.html$ /page-services.php [R=301,L]
+RewriteRule ^page-service-details\.html$ /page-service-details.php [R=301,L]
+RewriteRule ^page-projects\.html$ /page-projects.php [R=301,L]
+RewriteRule ^page-project-details\.html$ /page-project-details.php [R=301,L]
+RewriteRule ^page-house-and-lot\.html$ /page-house-and-lot.php [R=301,L]
+RewriteRule ^page-prime-lots\.html$ /page-prime-lots.php [R=301,L]
+RewriteRule ^page-rentals\.html$ /page-rentals.php [R=301,L]
+RewriteRule ^page-construction\.html$ /page-construction.php [R=301,L]
