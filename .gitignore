@@ -9,5 +9,7 @@ uploads/*
 *.log
 *.tmp
 database/*_deploy.sql
+database/uraca_realty.sql
+.cpanel-db-credentials.txt
 Thumbs.db
 .DS_Store
