@@ -425,6 +425,51 @@
       ]
     },
     {
+      "id": "selene-model-villa-conchita",
+      "category": "house-and-lot",
+      "name": "Selene Model - Premium Mediterranean Residence at Villa Conchita",
+      "price": "PHP 11,250,000",
+      "status": "Pre-selling / Near RFO Available",
+      "location": "Villa Conchita, Bago Gallera, Davao City",
+      "summary": "Own a premium 2-storey Mediterranean-inspired home in Villa Conchita, a prestigious 27-hectare gated community in Bago Gallera, Davao City. Featuring spacious living areas, 4 bedrooms, and family-oriented amenities, the Selene Model offers the perfect balance of comfort, security, and modern living.",
+      "description": [
+        "Discover elevated living with the Selene Model at Villa Conchita, a beautifully designed 2-storey Mediterranean-inspired residence located in one of Davao City's most desirable communities. Thoughtfully crafted for growing families, this premium home offers spacious interiors, elegant architectural details, and a lifestyle centered on comfort and exclusivity.",
+        "Set within a 27-hectare gated neighborhood in Bago Gallera, the Selene Model provides a secure and peaceful environment while remaining conveniently accessible to essential establishments throughout the city. Its well-planned layout includes four generously sized bedrooms, three bathrooms, and ample living spaces designed to accommodate both daily living and special family gatherings.",
+        "Residents of Villa Conchita enjoy access to exceptional community amenities including a swimming pool, basketball court, clubhouse, and open pavilion. Whether you're searching for your family's forever home or a valuable real estate investment, the Selene Model offers outstanding value in a thriving and highly sought-after residential community. Reserve your unit today and secure your place in this exclusive neighborhood."
+      ],
+      "features": [
+        "2-Storey Mediterranean-Inspired House and Lot",
+        "Located inside a 27-Hectare Gated Community",
+        "Access to Swimming Pool, Clubhouse, Basketball Court, and Open Pavilion",
+        "Peaceful, Secure, and Family-Friendly Environment",
+        "Pre-selling and Near Ready for Occupancy (RFO) Units Available",
+        "Ideal for Family Living and Long-Term Investment"
+      ],
+      "bedrooms": "4 Bedrooms",
+      "bathrooms": "3 Bathrooms",
+      "parking": "Available",
+      "lotArea": "180 sqm",
+      "floorArea": "119.13 sqm",
+      "updatedAt": "Updated June 2026",
+      "contactName": "Maylyn Grace Uraca",
+      "contactPhone": "+63 9185305683",
+      "heroImage": "images/Listings/Villa Conchita/hero.jpg",
+      "gallery": [
+        "images/Listings/Villa Conchita/1.jpg",
+        "images/Listings/Villa Conchita/2.jpg",
+        "images/Listings/Villa Conchita/3.jpg",
+        "images/Listings/Villa Conchita/4.jpg",
+        "images/Listings/Villa Conchita/5.jpg",
+        "images/Listings/Villa Conchita/6.jpg",
+        "images/Listings/Villa Conchita/7.jpg",
+        "images/Listings/Villa Conchita/8.jpg",
+        "images/Listings/Villa Conchita/9.jpg",
+        "images/Listings/Villa Conchita/10.jpg",
+        "images/Listings/Villa Conchita/11.jpg",
+        "images/Listings/Villa Conchita/12.jpg"
+      ]
+    },
+    {
       "id": "toril-duplex-construction-package",
       "category": "construction",
       "name": "Toril Duplex Construction Package",
