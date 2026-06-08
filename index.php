@@ -402,7 +402,7 @@ $homeContact = cms_section('home', 'contact_intro');
           <div class="video-image overflow-hidden">
             <img data-speed="0.8" src="images/resource/video-1-1.jpg" alt="img">
             <div class="content">
-              <a href="https://www.youtube.com/watch?v=Fvae8nxzVz4" class="play-now" data-fancybox="gallery" data-caption="">
+              <a href="https://www.facebook.com/plugins/video.php?height=322&amp;href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1394168952733138%2F&amp;show_text=false&amp;width=560&amp;t=0" class="play-now" data-fancybox="gallery" data-type="iframe" data-width="560" data-height="322" data-caption="">
                 <i class="icon fa-solid fa-play"></i>
                 <span class="ripple"></span>
               </a>
