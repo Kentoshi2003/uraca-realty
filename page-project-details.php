@@ -88,7 +88,7 @@ render_page_title($property['name'], ['Listings' => 'page-projects.php', $proper
           <div class="uraca-detail-sidebar-card__section">
             <div class="uraca-detail-sidebar-card__label">Agent Contact</div>
             <div class="uraca-detail-contact-card">
-              <div class="uraca-detail-contact-card__name"><?= e($property['contact_name'] ?: 'Marylyn Grace Uraca') ?></div>
+              <div class="uraca-detail-contact-card__name"><?= e($property['contact_name'] ?: 'Maylyn Grace Uraca') ?></div>
               <div class="uraca-detail-contact-card__meta"><span>Updated <?= e(date('F Y', strtotime((string) $property['updated_at']))) ?></span></div>
               <a class="theme-btn btn-style-one w-100 mb-3 uraca-detail-contact-card__primary-btn" href="page-contact.php"><span class="btn-title">Request Property Inquiry</span></a>
               <div class="uraca-detail-contact-card__actions">

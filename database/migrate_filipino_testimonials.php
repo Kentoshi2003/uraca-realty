@@ -11,7 +11,7 @@ if (PHP_SAPI !== 'cli') {
 $updates = [
     'Emily Carter' => [
         'headline' => 'Warm, patient guidance from inquiry to turnover',
-        'quote' => 'Uraca Realty helped our family compare homes around Davao City without pressure. Marylyn explained the documents clearly, scheduled viewings around our work hours, and guided us until we felt confident with our decision.',
+        'quote' => 'Uraca Realty helped our family compare homes around Davao City without pressure. Maylyn explained the documents clearly, scheduled viewings around our work hours, and guided us until we felt confident with our decision.',
         'client_name' => 'Ana',
         'client_role' => 'First-time Home Buyer, Davao City',
         'image_path' => 'images/resource/testimonial-ana.jpg',

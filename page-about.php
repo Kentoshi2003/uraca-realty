@@ -304,7 +304,7 @@ $testimonials = cms_testimonials();
                   <div class="content-info">
                     <img src="images/resource/sign.png" alt="">
                     <div class="content">
-                      <h6 class="m-0">Marylyn Grace Uraca</h6>
+                      <h6 class="m-0">Maylyn Grace Uraca</h6>
                       <div class="text-2">Owner/Realtor</div>
                     </div>
                   </div>
@@ -496,7 +496,7 @@ $testimonials = cms_testimonials();
                     <div class="testimonial-block-two">
                       <div class="inner-box">
                         <div class="logo"><i class="fa-classic fas fa-quote-left"></i></div>
-                        <div class="text testimonial-cms-text"><?= e($testimonials[0]['quote'] ?? 'Uraca Realty helped our family compare homes around Davao City without pressure. Marylyn explained the documents clearly, scheduled viewings around our work hours, and guided us until we felt confident with our decision.') ?></div>
+                        <div class="text testimonial-cms-text"><?= e($testimonials[0]['quote'] ?? 'Uraca Realty helped our family compare homes around Davao City without pressure. Maylyn explained the documents clearly, scheduled viewings around our work hours, and guided us until we felt confident with our decision.') ?></div>
                         <div class="author-info">
                           <div class="thumb"><img src="<?= e(validate_asset_path($testimonials[0]['image_path'] ?? '', 'images/resource/testimonial-ana.jpg')) ?>" alt="<?= e($testimonials[0]['client_name'] ?? 'Ana') ?>"></div>
                           <div class="info">

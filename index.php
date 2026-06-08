@@ -725,7 +725,7 @@ $homeContact = cms_section('home', 'contact_intro');
                       </div>
                     </div>
                     <div class="content-box">
-                      <div class="h4 title">Marylyn Grace Uraca</div>
+                      <div class="h4 title">Maylyn Grace Uraca</div>
                       <div class="text">Owner</div>
                     </div>
                   </div>
