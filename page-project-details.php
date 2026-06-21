@@ -190,6 +190,7 @@ render_page_title($property['name'], ['Listings' => 'page-projects.php', $proper
     aria-modal="true"
     aria-hidden="true"
     aria-labelledby="property-video-modal-title"
+    hidden
   >
     <div class="uraca-property-video-modal__backdrop" data-property-video-close></div>
     <div class="uraca-property-video-modal__dialog">
@@ -215,6 +216,7 @@ render_page_title($property['name'], ['Listings' => 'page-projects.php', $proper
     }
 
     const openModal = function () {
+      modal.hidden = false;
       modal.classList.add('is-open');
       modal.setAttribute('aria-hidden', 'false');
       document.body.classList.add('uraca-video-modal-open');
@@ -235,6 +237,7 @@ render_page_title($property['name'], ['Listings' => 'page-projects.php', $proper
       } catch (error) {}
       modal.classList.remove('is-open');
       modal.setAttribute('aria-hidden', 'true');
+      modal.hidden = true;
       document.body.classList.remove('uraca-video-modal-open');
       openButton.focus();
     };

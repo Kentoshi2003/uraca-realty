@@ -5,6 +5,7 @@ declare(strict_types=1);
 function render_public_head(string $title, string $description, string $canonicalPath, ?string $image = null): void
 {
     $ogImage = $image ?: 'images/preview.jpg';
+    $styleVersion = (string) (@filemtime(__DIR__ . '/../css/style.css') ?: 1);
     ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +31,7 @@ function render_public_head(string $title, string $description, string $canonica
   <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
   <link rel="icon" href="images/favicon.png" type="image/x-icon">
   <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/style.css" rel="stylesheet">
+  <link href="css/style.css?v=<?= e($styleVersion) ?>" rel="stylesheet">
   <link href="css/fontawesome.css" rel="stylesheet">
   <link href="css/flaticon-set-realestate.css" rel="stylesheet">
   <link href="css/animate.css" rel="stylesheet">

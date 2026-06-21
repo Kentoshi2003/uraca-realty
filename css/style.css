@@ -17006,6 +17006,9 @@ body.uraca-video-modal-open {
   visibility: hidden;
   z-index: 99999;
 }
+.uraca-property-video-modal[hidden] {
+  display: none;
+}
 .uraca-property-video-modal.is-open {
   opacity: 1;
   pointer-events: auto;
