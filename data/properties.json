@@ -482,6 +482,42 @@
         "images/Listings/Abreeza Place Tower 1/9.jpg",
         "images/Listings/Abreeza Place Tower 1/10.jpg"
       ]
+    },
+    {
+      "id": "premium-office-space-bgc-park-triangle-corporate-plaza",
+      "category": "commercial-investment",
+      "name": "Premium Office Space at BGC Park Triangle Corporate Plaza, Taguig City",
+      "price": "PHP 40,000,000",
+      "status": "For Sale",
+      "listingPurpose": "sale",
+      "location": "BGC Park Triangle Corporate Plaza, Bonifacio Global City (BGC), Taguig City",
+      "summary": "Own a premium office space in one of the country's most prestigious business districts. Located at BGC Park Triangle Corporate Plaza, this 93 sqm office unit with two dedicated parking slots offers an exceptional opportunity for businesses, professionals, and investors seeking a strategic corporate address in Bonifacio Global City.",
+      "description": [
+        "Establish your business in a prime corporate destination with this premium office space at BGC Park Triangle Corporate Plaza. Situated in the heart of Bonifacio Global City, this property provides an ideal environment for companies looking to elevate their professional presence in one of Metro Manila's most dynamic commercial hubs.",
+        "This well-positioned office unit offers 93 square meters of workspace, complemented by two dedicated 12.5-square-meter parking slots. The space is suitable for corporate offices, professional firms, consulting agencies, startups, and growing enterprises seeking accessibility, convenience, and a prestigious business address.",
+        "Surrounded by multinational corporations, financial institutions, luxury hotels, retail establishments, and dining destinations, this office space places your business at the center of opportunity. Whether for owner occupancy or investment purposes, this property delivers long-term value in a highly sought-after business district."
+      ],
+      "features": [
+        "Premium Office Space in Bonifacio Global City",
+        "Prestigious Corporate Business Address",
+        "Includes 2 Dedicated Parking Slots",
+        "Ideal for Corporate Headquarters, Professional Firms, and Growing Businesses",
+        "Located Near Major Commercial, Financial, and Lifestyle Establishments",
+        "Excellent Long-Term Commercial Investment Opportunity"
+      ],
+      "parking": "2 Dedicated Parking Slots (12.5 sqm each)",
+      "lotArea": "N/A",
+      "floorArea": "93 sqm",
+      "updatedAt": "Updated June 2026",
+      "contactName": "Maylyn Grace Uraca",
+      "contactPhone": "+63 9185305683",
+      "heroImage": "images/Listings/BGC Park Triangle Corporate Plaza/hero.jpg",
+      "gallery": [
+        "images/Listings/BGC Park Triangle Corporate Plaza/1.jpg",
+        "images/Listings/BGC Park Triangle Corporate Plaza/2.jpg",
+        "images/Listings/BGC Park Triangle Corporate Plaza/3.jpg",
+        "images/Listings/BGC Park Triangle Corporate Plaza/4.jpg"
+      ]
     }
   ]
 }
