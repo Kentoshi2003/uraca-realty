@@ -57,8 +57,14 @@ admin_header('Contact Inquiries');
               <span class="text-muted" style="font-size: 13px;"><?= e($inquiry['phone']) ?></span>
             </td>
             <td>
-              <strong><?= e($inquiry['subject']) ?></strong><br>
-              <small class="text-muted"><?= e($inquiry['source_page']) ?></small>
+              <strong><?= e($inquiry['subject'] ?: 'General inquiry') ?></strong><br>
+              <?php if (!empty($inquiry['property_slug'])): ?>
+                <a class="d-inline-block mt-1" href="../page-project-details.php?id=<?= rawurlencode($inquiry['property_slug']) ?>" target="_blank" rel="noopener noreferrer">
+                  <i class="fa-solid fa-building me-1"></i><?= e($inquiry['property_name']) ?>
+                </a>
+              <?php else: ?>
+                <small class="text-muted"><?= e($inquiry['source_page'] ?: 'Contact page') ?></small>
+              <?php endif; ?>
             </td>
             <td style="min-width: 280px; font-size: 13.5px; line-height: 1.5; color: #444;"><?= nl2br(e($inquiry['message'])) ?></td>
             <td style="font-size: 13px; color: #666;"><?= e($inquiry['created_at']) ?></td>

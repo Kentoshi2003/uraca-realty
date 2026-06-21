@@ -58,6 +58,7 @@ render_page_title($property['name'], ['Listings' => 'page-projects.php', $proper
 ?>
 <section class="project-details pt-120 pb-120">
   <div class="container">
+    <?php render_public_flash(); ?>
     <div class="row g-4 align-items-stretch mb-5">
       <div class="col-xl-8">
         <div class="uraca-detail-hero-card">
@@ -92,7 +93,7 @@ render_page_title($property['name'], ['Listings' => 'page-projects.php', $proper
             <div class="uraca-detail-contact-card">
               <div class="uraca-detail-contact-card__name"><?= e($property['contact_name'] ?: 'Maylyn Grace Uraca') ?></div>
               <div class="uraca-detail-contact-card__meta"><span>Updated <?= e(date('F Y', strtotime((string) $property['updated_at']))) ?></span></div>
-              <a class="theme-btn btn-style-one w-100 mb-3 uraca-detail-contact-card__primary-btn" href="page-contact.php"><span class="btn-title">Request Property Inquiry</span></a>
+              <a class="theme-btn btn-style-one w-100 mb-3 uraca-detail-contact-card__primary-btn" href="#property-inquiry"><span class="btn-title">Request Property Inquiry</span></a>
               <div class="uraca-detail-contact-card__actions">
                 <a class="uraca-detail-contact-card__icon-btn" href="<?= e(phone_href($property['contact_phone'])) ?>" aria-label="Call agent" title="Call">
                   <i class="fa-solid fa-phone"></i>
@@ -144,7 +145,7 @@ render_page_title($property['name'], ['Listings' => 'page-projects.php', $proper
               </button>
             </div>
           <?php endif; ?>
-          <div class="uraca-detail-section-card">
+          <div class="uraca-detail-section-card mb-4">
             <div class="uraca-detail-section-header">
               <div>
                 <div class="uraca-detail-section-card__eyebrow">Image Collection</div>
@@ -161,6 +162,34 @@ render_page_title($property['name'], ['Listings' => 'page-projects.php', $proper
                 </div>
               <?php endforeach; ?>
             </div>
+          </div>
+          <div class="uraca-detail-section-card uraca-property-inquiry" id="property-inquiry">
+            <div class="uraca-detail-section-card__eyebrow">Property Inquiry</div>
+            <h3 class="title mb-2">Ask About This Listing</h3>
+            <p class="uraca-property-inquiry__note">Send your details and our team will respond about this property.</p>
+            <form action="contact-submit.php" method="post">
+              <input type="hidden" name="csrf_token" value="<?= e(csrf_token()) ?>">
+              <input type="hidden" name="property_slug" value="<?= e($property['slug']) ?>">
+              <input type="hidden" name="source_page" value="page-project-details.php">
+              <input type="hidden" name="form_botcheck" value="">
+              <div class="mb-3">
+                <label for="inquiry-name">Name</label>
+                <input class="form-control" id="inquiry-name" name="form_name" type="text" autocomplete="name" required>
+              </div>
+              <div class="mb-3">
+                <label for="inquiry-email">Email</label>
+                <input class="form-control" id="inquiry-email" name="form_email" type="email" autocomplete="email" required>
+              </div>
+              <div class="mb-3">
+                <label for="inquiry-phone">Phone</label>
+                <input class="form-control" id="inquiry-phone" name="form_phone" type="tel" autocomplete="tel">
+              </div>
+              <div class="mb-4">
+                <label for="inquiry-message">Message</label>
+                <textarea class="form-control" id="inquiry-message" name="form_message" rows="5" required>I am interested in <?= e($property['name']) ?>. Please contact me with more information.</textarea>
+              </div>
+              <button class="theme-btn btn-style-one w-100" type="submit"><span class="btn-title">Send Inquiry</span></button>
+            </form>
           </div>
         </div>
         <div class="col-xl-4">

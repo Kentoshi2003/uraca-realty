@@ -217,12 +217,12 @@ $contactIntro = cms_section('contact', 'contact_intro');
                 <div class="row">
                   <div class="col-sm-6">
                     <div class="mb-3">
-                      <input name="form_name" class="form-control" type="text" placeholder="Enter Name">
+                      <input name="form_name" class="form-control" type="text" placeholder="Enter Name" autocomplete="name" required>
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <div class="mb-3">
-                      <input name="form_email" class="form-control required email" type="email" placeholder="Enter Email">
+                      <input name="form_email" class="form-control required email" type="email" placeholder="Enter Email" autocomplete="email" required>
                     </div>
                   </div>
                 </div>
@@ -234,16 +234,16 @@ $contactIntro = cms_section('contact', 'contact_intro');
                   </div>
                   <div class="col-sm-6">
                     <div class="mb-3">
-                      <input name="form_phone" class="form-control" type="text" placeholder="Enter Phone">
+                      <input name="form_phone" class="form-control" type="tel" placeholder="Enter Phone" autocomplete="tel">
                     </div>
                   </div>
                 </div>
                 <div class="mb-3">
-                  <textarea name="form_message" class="form-control required" rows="7" placeholder="Enter Message"></textarea>
+                  <textarea name="form_message" class="form-control required" rows="7" placeholder="Enter Message" required></textarea>
                 </div>
                 <div class="mb-5">
                   <input name="form_botcheck" class="form-control" type="hidden" value="" />
-                  <button type="submit" name="form_botcheck" class="btn-style-one mb-2 mb-sm-0 wow fadeInUp" data-loading-text="Please wait...">Send message <span class="arrow-right"><img src="images/icons/btn-icon-1.png" alt=""></span></button>
+                  <button type="submit" class="btn-style-one mb-2 mb-sm-0 wow fadeInUp" data-loading-text="Please wait...">Send message <span class="arrow-right"><img src="images/icons/btn-icon-1.png" alt=""></span></button>
                   <button type="reset" name="form_botcheck" class="btn-style-one wow fadeInUp" data-loading-text="Please wait...">Reset<span class="arrow-right"><img src="images/icons/btn-icon-1.png" alt=""></span></button>
                 </div>
               </form>

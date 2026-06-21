@@ -17,6 +17,9 @@ The taxonomy migration is idempotent and can be rerun safely. It adds the struct
 To enable optional property video tours on an existing installation, run:
 `C:\xampp\php\php.exe database\migrate_property_video.php`
 
+To link listing-specific inquiries to properties in the CMS inbox, run:
+`C:\xampp\php\php.exe database\migrate_inquiry_sources.php`
+
 ## Admin Login
 - URL: `/admin/login.php`
 - Seeded email: `admin@uracarealtyph.com`

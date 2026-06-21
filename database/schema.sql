@@ -157,6 +157,7 @@ CREATE TABLE IF NOT EXISTS cms_featured_listings (
 
 CREATE TABLE IF NOT EXISTS contact_inquiries (
   id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  property_id INT UNSIGNED NULL,
   name VARCHAR(160) NOT NULL,
   email VARCHAR(190) NOT NULL,
   phone VARCHAR(80) NULL,
@@ -165,5 +166,6 @@ CREATE TABLE IF NOT EXISTS contact_inquiries (
   source_page VARCHAR(190) NULL,
   is_read TINYINT(1) NOT NULL DEFAULT 0,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  INDEX idx_inquiries_read_created (is_read, created_at)
+  INDEX idx_inquiries_read_created (is_read, created_at),
+  INDEX idx_inquiries_property (property_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

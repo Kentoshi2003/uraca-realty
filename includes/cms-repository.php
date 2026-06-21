@@ -582,23 +582,41 @@ function cms_save_featured_listings(array $featured): void
 
 function cms_save_inquiry(array $data): int
 {
-    $stmt = db()->prepare('INSERT INTO contact_inquiries (name, email, phone, subject, message, source_page)
-        VALUES (:name, :email, :phone, :subject, :message, :source_page)');
-    $stmt->execute([
+    $params = [
         'name' => $data['name'],
         'email' => $data['email'],
         'phone' => $data['phone'] ?? null,
         'subject' => $data['subject'] ?? null,
         'message' => $data['message'],
         'source_page' => $data['source_page'] ?? null,
-    ]);
+    ];
+
+    if (cms_column_ready('contact_inquiries', 'property_id')) {
+        $params['property_id'] = !empty($data['property_id']) ? (int) $data['property_id'] : null;
+        $stmt = db()->prepare('INSERT INTO contact_inquiries
+            (property_id, name, email, phone, subject, message, source_page)
+            VALUES (:property_id, :name, :email, :phone, :subject, :message, :source_page)');
+    } else {
+        $stmt = db()->prepare('INSERT INTO contact_inquiries (name, email, phone, subject, message, source_page)
+            VALUES (:name, :email, :phone, :subject, :message, :source_page)');
+    }
+
+    $stmt->execute($params);
 
     return (int) db()->lastInsertId();
 }
 
 function cms_inquiries(): array
 {
-    return db()->query('SELECT * FROM contact_inquiries ORDER BY created_at DESC, id DESC')->fetchAll();
+    if (cms_column_ready('contact_inquiries', 'property_id')) {
+        return db()->query('SELECT ci.*, p.name AS property_name, p.slug AS property_slug
+            FROM contact_inquiries ci
+            LEFT JOIN properties p ON p.id = ci.property_id
+            ORDER BY ci.created_at DESC, ci.id DESC')->fetchAll();
+    }
+
+    return db()->query('SELECT ci.*, NULL AS property_name, NULL AS property_slug
+        FROM contact_inquiries ci ORDER BY ci.created_at DESC, ci.id DESC')->fetchAll();
 }
 
 function cms_mark_inquiry_read(int $id, bool $isRead): void
