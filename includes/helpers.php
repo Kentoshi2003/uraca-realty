@@ -160,6 +160,24 @@ function validate_asset_path(?string $path, string $fallback = ''): string
     return $fallback;
 }
 
+function validate_video_path(?string $path, string $fallback = ''): string
+{
+    $path = trim((string) $path);
+    if ($path === '') {
+        return $fallback;
+    }
+
+    if (preg_match('/[\x00-\x1F\x7F]/', $path) || str_contains($path, '..') || str_starts_with($path, '//')) {
+        return $fallback;
+    }
+
+    if (preg_match('#^(images|uploads)/[a-z0-9 _.,()/\-]+?\.(?:mp4|webm)$#i', $path)) {
+        return $path;
+    }
+
+    return $fallback;
+}
+
 function validate_embed_url(?string $url, string $fallback = ''): string
 {
     $url = trim((string) $url);

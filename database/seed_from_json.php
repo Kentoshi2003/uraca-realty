@@ -65,6 +65,7 @@ try {
             'contact_name' => $property['contactName'] ?? null,
             'contact_phone' => $property['contactPhone'] ?? null,
             'hero_image' => $property['heroImage'] ?? null,
+            'video_path' => $property['videoPath'] ?? null,
             'is_published' => 1,
             'sort_order' => $index,
         ], $property['description'] ?? [], $property['features'] ?? [], $existingId ? (int) $existingId : null);

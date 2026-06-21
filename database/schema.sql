@@ -38,6 +38,7 @@ CREATE TABLE IF NOT EXISTS properties (
   contact_name VARCHAR(160) NULL,
   contact_phone VARCHAR(80) NULL,
   hero_image VARCHAR(255) NULL,
+  video_path VARCHAR(255) NULL,
   is_published TINYINT(1) NOT NULL DEFAULT 1,
   sort_order INT NOT NULL DEFAULT 0,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,

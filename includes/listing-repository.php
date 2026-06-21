@@ -154,9 +154,9 @@ function save_property(array $data, array $descriptions, array $features, ?int $
 {
     if ($propertyId === null) {
         $stmt = db()->prepare('INSERT INTO properties
-            (category_id, slug, name, price, status, listing_purpose, location, summary, bedrooms, bathrooms, parking, lot_area, floor_area, contact_name, contact_phone, hero_image, is_published, sort_order)
+            (category_id, slug, name, price, status, listing_purpose, location, summary, bedrooms, bathrooms, parking, lot_area, floor_area, contact_name, contact_phone, hero_image, video_path, is_published, sort_order)
             VALUES
-            (:category_id, :slug, :name, :price, :status, :listing_purpose, :location, :summary, :bedrooms, :bathrooms, :parking, :lot_area, :floor_area, :contact_name, :contact_phone, :hero_image, :is_published, :sort_order)');
+            (:category_id, :slug, :name, :price, :status, :listing_purpose, :location, :summary, :bedrooms, :bathrooms, :parking, :lot_area, :floor_area, :contact_name, :contact_phone, :hero_image, :video_path, :is_published, :sort_order)');
     } else {
         $stmt = db()->prepare('UPDATE properties SET
             category_id = :category_id,
@@ -175,6 +175,7 @@ function save_property(array $data, array $descriptions, array $features, ?int $
             contact_name = :contact_name,
             contact_phone = :contact_phone,
             hero_image = :hero_image,
+            video_path = :video_path,
             is_published = :is_published,
             sort_order = :sort_order
             WHERE id = :id');
@@ -197,6 +198,7 @@ function save_property(array $data, array $descriptions, array $features, ?int $
         'contact_name' => $data['contact_name'],
         'contact_phone' => $data['contact_phone'],
         'hero_image' => $data['hero_image'],
+        'video_path' => validate_video_path($data['video_path'] ?? '', ''),
         'is_published' => !empty($data['is_published']) ? 1 : 0,
         'sort_order' => (int) ($data['sort_order'] ?? 0),
     ];
@@ -212,6 +214,12 @@ function save_property(array $data, array $descriptions, array $features, ?int $
     replace_property_features($savedId, $features);
 
     return $savedId;
+}
+
+function update_property_video_path(int $propertyId, string $videoPath): void
+{
+    $stmt = db()->prepare('UPDATE properties SET video_path = :video_path WHERE id = :id');
+    $stmt->execute(['video_path' => validate_video_path($videoPath, ''), 'id' => $propertyId]);
 }
 
 function replace_property_descriptions(int $propertyId, array $descriptions): void

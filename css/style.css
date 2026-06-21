@@ -16922,6 +16922,22 @@ Sidebar
 .uraca-listing-filter-tabs--purpose a:last-child {
   border-right: 0;
 }
+.uraca-property-video {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+  padding: 14px;
+  border-radius: 8px;
+  background: #111;
+}
+.uraca-property-video video {
+  display: block;
+  width: 100%;
+  max-width: 480px;
+  max-height: 720px;
+  border-radius: 6px;
+  background: #111;
+}
 @media only screen and (max-width: 991px) {
   .uraca-category-intro {
     padding: 20px;

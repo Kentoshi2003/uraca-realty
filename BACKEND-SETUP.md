@@ -14,6 +14,9 @@ For an existing installation, apply the four-category property taxonomy upgrade 
 
 The taxonomy migration is idempotent and can be rerun safely. It adds the structured sale/rent purpose, remaps existing listings, unpublishes the former construction packages, and creates the Construction & Design-Build CMS service.
 
+To enable optional property video tours on an existing installation, run:
+`C:\xampp\php\php.exe database\migrate_property_video.php`
+
 ## Admin Login
 - URL: `/admin/login.php`
 - Seeded email: `admin@uracarealtyph.com`

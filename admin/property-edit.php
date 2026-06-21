@@ -17,6 +17,7 @@ const LISTING_HERO_WIDTH = 1600;
 const LISTING_HERO_HEIGHT = 1000;
 const LISTING_HERO_MIN_WIDTH = 1600;
 const LISTING_HERO_MIN_HEIGHT = 1000;
+const LISTING_VIDEO_MAX_BYTES = 75 * 1024 * 1024;
 
 if ($propertyId && !$property) {
     flash('Listing not found.', 'danger');
@@ -106,6 +107,7 @@ function validate_listing_image_upload(string $fieldName, array &$errors, string
 function validate_listing_uploads(array &$errors): void
 {
     validate_listing_image_upload('hero_image_upload', $errors, 'Hero image', true);
+    validate_listing_video_upload($errors);
 
     if (empty($_FILES['images']['name'][0])) {
         return;
@@ -113,6 +115,28 @@ function validate_listing_uploads(array &$errors): void
 
     foreach ($_FILES['images']['tmp_name'] as $index => $_) {
         validate_listing_image_upload('images', $errors, 'Gallery image ' . ($index + 1), false, $index);
+    }
+}
+
+function validate_listing_video_upload(array &$errors): void
+{
+    if (!listing_has_upload('video_upload')) {
+        return;
+    }
+
+    $file = $_FILES['video_upload'];
+    if ((int) ($file['error'] ?? UPLOAD_ERR_NO_FILE) !== UPLOAD_ERR_OK) {
+        $errors[] = 'Property video upload failed. Check the server upload limit and choose the file again.';
+        return;
+    }
+    if ((int) ($file['size'] ?? 0) > LISTING_VIDEO_MAX_BYTES) {
+        $errors[] = 'Property video must be 75MB or smaller.';
+        return;
+    }
+
+    $mime = listing_upload_finfo()->file((string) $file['tmp_name']);
+    if ($mime !== 'video/mp4') {
+        $errors[] = 'Property video must be an MP4 file.';
     }
 }
 
@@ -219,6 +243,26 @@ function upload_listing_images(int $propertyId, string $propertyName, bool $make
     }
 }
 
+function upload_listing_video(int $propertyId, string $propertyName, array &$errors): void
+{
+    if (!listing_has_upload('video_upload')) {
+        return;
+    }
+
+    if (!is_dir(UPLOAD_DIR)) {
+        mkdir(UPLOAD_DIR, 0755, true);
+    }
+
+    $fileName = slugify($propertyName) . '-video-' . bin2hex(random_bytes(5)) . '.mp4';
+    $destination = rtrim(UPLOAD_DIR, '/\\') . DIRECTORY_SEPARATOR . $fileName;
+    if (!move_uploaded_file((string) $_FILES['video_upload']['tmp_name'], $destination)) {
+        $errors[] = 'Property video could not be saved.';
+        return;
+    }
+
+    update_property_video_path($propertyId, rtrim(UPLOAD_URL, '/\\') . '/' . $fileName);
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     verify_csrf();
 
@@ -226,6 +270,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $slug = trim((string) ($_POST['slug'] ?? '')) ?: slugify($name);
     $categoryId = (int) ($_POST['category_id'] ?? 0);
     $listingPurpose = normalize_listing_purpose((string) ($_POST['listing_purpose'] ?? ''));
+    $videoPath = trim((string) ($_POST['video_path'] ?? ''));
 
     if ($name === '') {
         $errors[] = 'Name is required.';
@@ -235,6 +280,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     if ($listingPurpose === '') {
         $errors[] = 'Listing purpose must be For Sale or For Rent.';
+    }
+    if ($videoPath !== '' && validate_video_path($videoPath, '') === '') {
+        $errors[] = 'Property video path must be an MP4 or WEBM file under images/ or uploads/.';
     }
     validate_listing_uploads($errors);
 
@@ -256,11 +304,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'contact_name' => trim((string) ($_POST['contact_name'] ?? '')),
             'contact_phone' => trim((string) ($_POST['contact_phone'] ?? '')),
             'hero_image' => trim((string) ($_POST['hero_image'] ?? '')),
+            'video_path' => $videoPath,
             'is_published' => isset($_POST['is_published']) ? 1 : 0,
             'sort_order' => (int) ($_POST['sort_order'] ?? 0),
         ], split_lines((string) ($_POST['descriptions'] ?? '')), split_lines((string) ($_POST['features'] ?? '')), $propertyId);
 
         $uploadedHero = upload_listing_hero_image($savedId, $name, $errors);
+        upload_listing_video($savedId, $name, $errors);
         if (!$errors) {
             upload_listing_images($savedId, $name, !$uploadedHero && trim((string) ($_POST['hero_image'] ?? '')) === '');
         }
@@ -292,6 +342,7 @@ $form = array_merge([
     'contact_name' => 'Maylyn Grace Uraca',
     'contact_phone' => '+63 9185305683',
     'hero_image' => '',
+    'video_path' => '',
     'is_published' => 1,
     'sort_order' => 0,
     'descriptions' => '',
@@ -443,6 +494,22 @@ admin_header($property ? 'Edit Listing' : 'Add Listing');
     <input class="form-control" type="file" id="images" name="images[]" multiple accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp">
     <div class="form-text">Allowed: JPG, PNG, WEBP. Maximum 5MB each.</div>
   </div>
+  <div class="mb-3">
+    <label for="video_path">Property Video Path</label>
+    <input class="form-control" id="video_path" name="video_path" value="<?= e($form['video_path']) ?>">
+    <div class="form-text">Optional existing MP4 or WEBM path under images/ or uploads/.</div>
+  </div>
+  <div class="mb-4">
+    <label for="video_upload">Upload Property Video</label>
+    <input class="form-control" type="file" id="video_upload" name="video_upload" accept="video/mp4,.mp4">
+    <div class="form-text">Optional MP4 video, maximum 75MB. Your server PHP upload limit must also allow the file size.</div>
+  </div>
+  <?php if (!empty($form['video_path'])): ?>
+    <?php $formVideoMime = str_ends_with(strtolower((string) $form['video_path']), '.webm') ? 'video/webm' : 'video/mp4'; ?>
+    <video class="w-100 mb-4" controls preload="metadata" style="max-height: 420px; background: #111;">
+      <source src="../<?= e($form['video_path']) ?>" type="<?= e($formVideoMime) ?>">
+    </video>
+  <?php endif; ?>
   </div>
   <div class="admin-actions">
     <button class="btn btn-primary" type="submit"><i class="fa-solid fa-floppy-disk"></i> Save Listing</button>

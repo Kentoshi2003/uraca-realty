@@ -35,6 +35,8 @@ if (!$property) {
 
 $images = $property['images'] ?: [];
 $heroImage = $property['hero_image'] ?: ($images[0]['image_path'] ?? 'images/resource/project-details.jpg');
+$videoPath = validate_video_path($property['video_path'] ?? '', '');
+$videoMime = str_ends_with(strtolower($videoPath), '.webm') ? 'video/webm' : 'video/mp4';
 $galleryImages = array_values(array_filter($images, static fn ($image) => empty($image['is_hero'])));
 $specs = [
     'Bedrooms' => $property['bedrooms'],
@@ -117,6 +119,22 @@ render_page_title($property['name'], ['Listings' => 'page-projects.php', $proper
               <p class="text uraca-detail-paragraph"><?= e($paragraph) ?></p>
             <?php endforeach; ?>
           </div>
+          <?php if ($videoPath !== ''): ?>
+            <div class="uraca-detail-section-card mb-4">
+              <div class="uraca-detail-section-header">
+                <div>
+                  <div class="uraca-detail-section-card__eyebrow">Video Walkthrough</div>
+                  <h3 class="title mb-0">Property Video Tour</h3>
+                </div>
+              </div>
+              <div class="uraca-property-video">
+                <video controls playsinline preload="metadata" poster="<?= e($heroImage) ?>">
+                  <source src="<?= e($videoPath) ?>" type="<?= e($videoMime) ?>">
+                  Your browser does not support embedded property videos.
+                </video>
+              </div>
+            </div>
+          <?php endif; ?>
           <div class="uraca-detail-section-card">
             <div class="uraca-detail-section-header">
               <div>
@@ -156,4 +174,3 @@ render_page_title($property['name'], ['Listings' => 'page-projects.php', $proper
   </div>
 </section>
 <?php render_public_footer(); ?>
-

@@ -74,6 +74,7 @@ try {
         'contact_name' => $listing['contactName'] ?? null,
         'contact_phone' => $listing['contactPhone'] ?? null,
         'hero_image' => $listing['heroImage'] ?? null,
+        'video_path' => $listing['videoPath'] ?? null,
         'is_published' => 1,
         'sort_order' => $sortOrder,
     ], $listing['description'] ?? [], $listing['features'] ?? [], $propertyId);
