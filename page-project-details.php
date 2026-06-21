@@ -127,12 +127,21 @@ render_page_title($property['name'], ['Listings' => 'page-projects.php', $proper
                   <h3 class="title mb-0">Property Video Tour</h3>
                 </div>
               </div>
-              <div class="uraca-property-video">
-                <video controls playsinline preload="metadata" poster="<?= e($heroImage) ?>">
-                  <source src="<?= e($videoPath) ?>" type="<?= e($videoMime) ?>">
-                  Your browser does not support embedded property videos.
-                </video>
-              </div>
+              <button
+                class="uraca-property-video-preview"
+                type="button"
+                aria-label="Play property tour"
+                aria-haspopup="dialog"
+                aria-controls="property-video-modal"
+                data-property-video-open
+              >
+                <img src="<?= e($heroImage) ?>" alt="" loading="lazy">
+                <span class="uraca-property-video-preview__shade" aria-hidden="true"></span>
+                <span class="uraca-property-video-preview__play" aria-hidden="true">
+                  <i class="fa-solid fa-play"></i>
+                </span>
+                <span class="uraca-property-video-preview__label">Watch property tour</span>
+              </button>
             </div>
           <?php endif; ?>
           <div class="uraca-detail-section-card">
@@ -173,4 +182,73 @@ render_page_title($property['name'], ['Listings' => 'page-projects.php', $proper
     </div>
   </div>
 </section>
+<?php if ($videoPath !== ''): ?>
+  <div
+    class="uraca-property-video-modal"
+    id="property-video-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-hidden="true"
+    aria-labelledby="property-video-modal-title"
+  >
+    <div class="uraca-property-video-modal__backdrop" data-property-video-close></div>
+    <div class="uraca-property-video-modal__dialog">
+      <h2 class="visually-hidden" id="property-video-modal-title">Property Video Tour</h2>
+      <button class="uraca-property-video-modal__close" type="button" aria-label="Close property video" data-property-video-close>
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+      <video controls playsinline preload="metadata" poster="<?= e($heroImage) ?>" data-property-video-player>
+        <source src="<?= e($videoPath) ?>" type="<?= e($videoMime) ?>">
+        Your browser does not support embedded property videos.
+      </video>
+    </div>
+  </div>
+  <script>
+  (function () {
+    const modal = document.getElementById('property-video-modal');
+    const openButton = document.querySelector('[data-property-video-open]');
+    const closeButton = modal ? modal.querySelector('.uraca-property-video-modal__close') : null;
+    const player = modal ? modal.querySelector('[data-property-video-player]') : null;
+
+    if (!modal || !openButton || !closeButton || !player) {
+      return;
+    }
+
+    const openModal = function () {
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('uraca-video-modal-open');
+      closeButton.focus();
+      const playPromise = player.play();
+      if (playPromise && typeof playPromise.catch === 'function') {
+        playPromise.catch(function () {});
+      }
+    };
+
+    const closeModal = function () {
+      if (!modal.classList.contains('is-open')) {
+        return;
+      }
+      player.pause();
+      try {
+        player.currentTime = 0;
+      } catch (error) {}
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('uraca-video-modal-open');
+      openButton.focus();
+    };
+
+    openButton.addEventListener('click', openModal);
+    modal.querySelectorAll('[data-property-video-close]').forEach(function (element) {
+      element.addEventListener('click', closeModal);
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && modal.classList.contains('is-open')) {
+        closeModal();
+      }
+    });
+  }());
+  </script>
+<?php endif; ?>
 <?php render_public_footer(); ?>

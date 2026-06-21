@@ -16922,21 +16922,150 @@ Sidebar
 .uraca-listing-filter-tabs--purpose a:last-child {
   border-right: 0;
 }
-.uraca-property-video {
+.uraca-property-video-preview {
+  align-items: center;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
   display: flex;
   justify-content: center;
   margin-top: 24px;
-  padding: 14px;
-  border-radius: 8px;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  width: 100%;
   background: #111;
 }
-.uraca-property-video video {
+.uraca-property-video-preview img {
   display: block;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
   width: 100%;
-  max-width: 480px;
-  max-height: 720px;
-  border-radius: 6px;
-  background: #111;
+}
+.uraca-property-video-preview:hover img,
+.uraca-property-video-preview:focus-visible img {
+  transform: scale(1.025);
+}
+.uraca-property-video-preview__shade {
+  background: rgba(0, 0, 0, 0.28);
+  inset: 0;
+  position: absolute;
+  transition: background 0.25s ease;
+}
+.uraca-property-video-preview:hover .uraca-property-video-preview__shade,
+.uraca-property-video-preview:focus-visible .uraca-property-video-preview__shade {
+  background: rgba(0, 0, 0, 0.38);
+}
+.uraca-property-video-preview__play {
+  align-items: center;
+  background: #fff;
+  border-radius: 50%;
+  color: #111;
+  display: flex;
+  font-size: 19px;
+  height: 68px;
+  justify-content: center;
+  padding-left: 4px;
+  position: absolute;
+  transition: transform 0.25s ease, background 0.25s ease;
+  width: 68px;
+}
+.uraca-property-video-preview:hover .uraca-property-video-preview__play,
+.uraca-property-video-preview:focus-visible .uraca-property-video-preview__play {
+  background: var(--theme-color1);
+  color: #fff;
+  transform: scale(1.06);
+}
+.uraca-property-video-preview__label {
+  bottom: 20px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  left: 22px;
+  position: absolute;
+}
+.uraca-property-video-preview:focus-visible {
+  outline: 3px solid var(--theme-color1);
+  outline-offset: 3px;
+}
+body.uraca-video-modal-open {
+  overflow: hidden;
+}
+.uraca-property-video-modal {
+  align-items: center;
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  opacity: 0;
+  padding: 5vh 4vw;
+  pointer-events: none;
+  position: fixed;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  visibility: hidden;
+  z-index: 99999;
+}
+.uraca-property-video-modal.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
+.uraca-property-video-modal__backdrop {
+  backdrop-filter: blur(12px);
+  background: rgba(8, 8, 8, 0.78);
+  inset: 0;
+  position: absolute;
+}
+.uraca-property-video-modal__dialog {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  max-height: 90vh;
+  max-width: 92vw;
+  position: relative;
+  z-index: 1;
+}
+.uraca-property-video-modal video {
+  background: #050505;
+  border-radius: 8px;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.48);
+  display: block;
+  height: auto;
+  max-height: 86vh;
+  max-width: 92vw;
+  object-fit: contain;
+  width: auto;
+}
+.uraca-property-video-modal__close {
+  align-items: center;
+  background: #fff;
+  border: 0;
+  border-radius: 50%;
+  color: #111;
+  display: flex;
+  font-size: 18px;
+  height: 42px;
+  justify-content: center;
+  position: absolute;
+  right: -16px;
+  top: -16px;
+  transition: background 0.2s ease, color 0.2s ease;
+  width: 42px;
+  z-index: 2;
+}
+.uraca-property-video-modal__close:hover,
+.uraca-property-video-modal__close:focus-visible {
+  background: var(--theme-color1);
+  color: #fff;
+  outline: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .uraca-property-video-preview img,
+  .uraca-property-video-preview__play,
+  .uraca-property-video-modal {
+    transition: none;
+  }
 }
 @media only screen and (max-width: 991px) {
   .uraca-category-intro {
@@ -16972,6 +17101,24 @@ Sidebar
   }
 }
 @media only screen and (max-width: 767px) {
+  .uraca-property-video-preview__play {
+    height: 56px;
+    width: 56px;
+  }
+  .uraca-property-video-preview__label {
+    bottom: 14px;
+    left: 16px;
+  }
+  .uraca-property-video-modal {
+    padding: 5vh 4vw;
+  }
+  .uraca-property-video-modal video {
+    max-height: 82vh;
+  }
+  .uraca-property-video-modal__close {
+    right: -8px;
+    top: -52px;
+  }
   .uraca-listing-hub-heading {
     align-items: flex-start;
     flex-direction: column;
