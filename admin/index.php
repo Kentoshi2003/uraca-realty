@@ -43,6 +43,7 @@ admin_header('Listings');
         <tr>
           <th>Listing</th>
           <th>Category</th>
+          <th>Purpose</th>
           <th>Status</th>
           <th>Published</th>
           <th class="text-end">Actions</th>
@@ -61,6 +62,7 @@ admin_header('Listings');
               </div>
             </td>
             <td><span class="admin-pill"><?= e($property['category_name']) ?></span></td>
+            <td><span class="admin-pill"><?= e(listing_purposes()[normalize_listing_purpose($property['listing_purpose'] ?? '') ?: 'sale']) ?></span></td>
             <td><?= e($property['status']) ?></td>
             <td>
               <?php if ((int) $property['is_published'] === 1): ?>

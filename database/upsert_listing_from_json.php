@@ -63,6 +63,7 @@ try {
         'name' => $listing['name'],
         'price' => $listing['price'] ?? null,
         'status' => $listing['status'] ?? null,
+        'listing_purpose' => $listing['listingPurpose'] ?? 'sale',
         'location' => $listing['location'] ?? null,
         'summary' => $listing['summary'] ?? null,
         'bedrooms' => $listing['bedrooms'] ?? null,

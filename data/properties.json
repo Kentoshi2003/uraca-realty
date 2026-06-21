@@ -1,41 +1,42 @@
 {
   "categories": [
     {
-      "slug": "house-and-lot",
-      "name": "House and Lot",
-      "description": "Browse ready-for-occupancy and pre-selling homes ideal for families, investors, and first-time buyers in key Davao locations.",
-      "heroImage": "images/Categories/House and Lot.png",
-      "pageUrl": "page-house-and-lot.php"
+      "slug": "houses-townhouses",
+      "name": "Houses & Townhouses",
+      "description": "Explore detached homes, house-and-lot packages, bungalows, duplexes, and townhouses for sale or rent across Davao.",
+      "heroImage": "images/Categories/houses-townhouses.jpg",
+      "pageUrl": "page-houses-and-townhouses.php"
     },
     {
-      "slug": "prime-lots",
-      "name": "Prime Lots",
-      "description": "Explore residential and commercial lots with strong long-term value, strategic access, and excellent development potential.",
-      "heroImage": "images/Categories/Prime Lots.png",
-      "pageUrl": "page-prime-lots.php"
+      "slug": "condos-apartments",
+      "name": "Condos & Apartments",
+      "description": "Browse condominium units, apartments, studios, and urban residences available for sale or rent.",
+      "heroImage": "images/Categories/condos-apartments.jpg",
+      "pageUrl": "page-condos-and-apartments.php"
     },
     {
-      "slug": "rentals",
-      "name": "Rentals",
-      "description": "Find move-in-ready condos, townhouses, and family homes for short-term or long-term rental around Davao City.",
-      "heroImage": "images/Categories/Rentals.png",
-      "pageUrl": "page-rentals.php"
+      "slug": "lots-land",
+      "name": "Lots & Land",
+      "description": "Discover residential, commercial, and investment land with strong access, development potential, and long-term value.",
+      "heroImage": "images/Categories/lots-land.jpg",
+      "pageUrl": "page-lots-and-land.php"
     },
     {
-      "slug": "construction",
-      "name": "Construction",
-      "description": "Showcase design-and-build opportunities, build packages, and custom construction projects for residential investors and homeowners.",
-      "heroImage": "images/Categories/Construction.png",
-      "pageUrl": "page-construction.php"
+      "slug": "commercial-investment",
+      "name": "Commercial & Investment",
+      "description": "Find offices, retail spaces, warehouses, mixed-use buildings, and income-focused property opportunities.",
+      "heroImage": "images/Categories/commercial-investment.jpg",
+      "pageUrl": "page-commercial-and-investment.php"
     }
   ],
   "properties": [
     {
       "id": "luxury-house-ladislawa-davao",
-      "category": "house-and-lot",
+      "category": "houses-townhouses",
       "name": "Luxury House & Lot - Ladislawa, Davao City",
       "price": "PHP 60,000,000",
       "status": "For Sale | Clean Title",
+      "listingPurpose": "sale",
       "location": "Ladislawa, Davao City",
       "summary": "A spacious luxury residence in Ladislawa with generous indoor living spaces, private family areas, and premium support rooms for comfortable upscale living.",
       "description": [
@@ -81,10 +82,11 @@
     },
     {
       "id": "newly-built-house-ilumina-buhangin",
-      "category": "house-and-lot",
+      "category": "houses-townhouses",
       "name": "Newly Built House - Ilumina Buhangin, Davao City",
       "price": "PHP 20,500,000",
       "status": "Brand New | Ready for Occupancy",
+      "listingPurpose": "sale",
       "location": "Ilumina, Buhangin, Davao City",
       "summary": "A newly built modern home in Ilumina, Buhangin featuring 5 bedrooms, custom storage, inverter air-conditioning, and smart utility provisions.",
       "description": [
@@ -132,10 +134,11 @@
     },
     {
       "id": "multi-house-property-juna-subdivision-matina",
-      "category": "house-and-lot",
+      "category": "houses-townhouses",
       "name": "Multi-House Property - Juna Subdivision, Matina",
       "price": "PHP 32,000,000 Net",
       "status": "Clean Title | Ready to Transfer",
+      "listingPurpose": "sale",
       "location": "Juna Subdivision, Matina, Davao City",
       "summary": "A multi-unit property in Juna Subdivision with a main house, second unit, and back house, positioned near SM Ecoland and key commercial areas.",
       "description": [
@@ -181,10 +184,11 @@
     },
     {
       "id": "brand-new-bungalow-santiago-villas-catalunan-grande",
-      "category": "house-and-lot",
+      "category": "houses-townhouses",
       "name": "Brand New Bungalow - Santiago Villas, Catalunan Grande",
       "price": "PHP 4,900,000",
       "status": "Ready for Occupancy | Clean Title",
+      "listingPurpose": "sale",
       "location": "Santiago Villas, Catalunan Grande, Davao City",
       "summary": "A brand-new bungalow on a corner lot inside a gated and guarded community with easy downtown access and financing options available.",
       "description": [
@@ -229,10 +233,11 @@
     },
     {
       "id": "samal-view-estate-lot",
-      "category": "prime-lots",
+      "category": "lots-land",
       "name": "Samal View Estate Lot",
       "price": "PHP 18,000 per sqm",
       "status": "For Sale",
+      "listingPurpose": "sale",
       "location": "Panacan, Davao City",
       "summary": "A premium residential lot in a fast-appreciating area with city access and excellent long-term investment appeal.",
       "description": [
@@ -267,10 +272,11 @@
     },
     {
       "id": "mintal-corner-commercial-lot",
-      "category": "prime-lots",
+      "category": "lots-land",
       "name": "Mintal Corner Commercial Lot",
       "price": "PHP 25,000 per sqm",
       "status": "For Sale",
+      "listingPurpose": "sale",
       "location": "Mintal, Davao City",
       "summary": "A corner lot suited for mixed-use development, showroom space, or a future rental-income property.",
       "description": [
@@ -305,10 +311,11 @@
     },
     {
       "id": "elev8-furnished-condo",
-      "category": "rentals",
+      "category": "condos-apartments",
       "name": "Elev8 Furnished Condo",
       "price": "PHP 28,000 / month",
       "status": "For Rent",
+      "listingPurpose": "rent",
       "location": "Downtown Davao City",
       "summary": "A furnished condo unit for professionals and small families who want a central address and flexible move-in setup.",
       "description": [
@@ -345,10 +352,11 @@
     },
     {
       "id": "lanang-family-townhouse-rental",
-      "category": "rentals",
+      "category": "houses-townhouses",
       "name": "Lanang Family Townhouse Rental",
       "price": "PHP 45,000 / month",
       "status": "For Rent",
+      "listingPurpose": "rent",
       "location": "Lanang, Davao City",
       "summary": "A spacious townhouse rental with multiple rooms, ideal for families who want comfort and access to key business districts.",
       "description": [
@@ -385,51 +393,12 @@
       ]
     },
     {
-      "id": "buhangin-modern-build-package",
-      "category": "construction",
-      "name": "Buhangin Modern Build Package",
-      "price": "Starting at PHP 3,200,000",
-      "status": "Open for Build",
-      "location": "Buhangin, Davao City",
-      "summary": "A modern residential design-and-build package for clients who already own land and want a guided construction process.",
-      "description": [
-        "Buhangin Modern Build Package is built for landowners who want a clearer path from concept to turnover. The package can include design consultation, budgeting, construction coordination, and finishing guidance.",
-        "This setup helps clients move faster while keeping design quality and build planning aligned with their target budget and lot conditions."
-      ],
-      "features": [
-        "Design-and-build package",
-        "Ideal for owned residential lots",
-        "Modern facade concept",
-        "Managed project coordination"
-      ],
-      "bedrooms": "3 Bedrooms",
-      "bathrooms": "2 Bathrooms",
-      "floorArea": "85 sqm",
-      "updatedAt": "Updated April 2026",
-      "contactName": "Maylyn Grace Uraca",
-      "contactPhone": "+63 9185305683",
-      "heroImage": "images/resource/project2-1.jpg",
-      "gallery": [
-        "images/resource/project2-1.jpg",
-        "images/resource/service-d1.jpg",
-        "images/resource/floor-1.jpg",
-        "images/resource/project2-2.jpg",
-        "images/resource/service-d2.jpg",
-        "images/resource/project1-1.jpg",
-        "images/resource/project1-2.jpg",
-        "images/resource/project1-3.jpg",
-        "images/resource/gallery-1.jpg",
-        "images/resource/gallery-2.jpg",
-        "images/resource/gallery-3.jpg",
-        "images/resource/gallery-4.jpg"
-      ]
-    },
-    {
       "id": "selene-model-villa-conchita",
-      "category": "house-and-lot",
+      "category": "houses-townhouses",
       "name": "Selene Model - Premium Mediterranean Residence at Villa Conchita",
       "price": "PHP 11,250,000",
       "status": "Pre-selling / Near RFO Available",
+      "listingPurpose": "sale",
       "location": "Villa Conchita, Bago Gallera, Davao City",
       "summary": "Own a premium 2-storey Mediterranean-inspired home in Villa Conchita, a prestigious 27-hectare gated community in Bago Gallera, Davao City. Featuring spacious living areas, 4 bedrooms, and family-oriented amenities, the Selene Model offers the perfect balance of comfort, security, and modern living.",
       "description": [
@@ -467,46 +436,6 @@
         "images/Listings/Villa Conchita/10.jpg",
         "images/Listings/Villa Conchita/11.jpg",
         "images/Listings/Villa Conchita/12.jpg"
-      ]
-    },
-    {
-      "id": "toril-duplex-construction-package",
-      "category": "construction",
-      "name": "Toril Duplex Construction Package",
-      "price": "Starting at PHP 4,900,000",
-      "status": "Open for Build",
-      "location": "Toril, Davao City",
-      "summary": "A duplex-focused construction package for investors planning rental income, multi-family use, or phased property development.",
-      "description": [
-        "Toril Duplex Construction Package is structured for clients who want to maximize land use through a two-unit residential concept. It can suit owner-occupiers, extended families, or investors planning rental returns.",
-        "The package emphasizes efficient planning, practical unit division, and a build approach that supports future occupancy or leasing goals."
-      ],
-      "features": [
-        "Duplex-oriented layout",
-        "Investment-friendly concept",
-        "Good fit for rental strategy",
-        "Guided planning and construction"
-      ],
-      "bedrooms": "4 Bedrooms",
-      "bathrooms": "4 Bathrooms",
-      "floorArea": "132 sqm",
-      "updatedAt": "Updated April 2026",
-      "contactName": "Maylyn Grace Uraca",
-      "contactPhone": "+63 9185305683",
-      "heroImage": "images/resource/service-d2.jpg",
-      "gallery": [
-        "images/resource/service-d2.jpg",
-        "images/resource/flooe-1.png",
-        "images/resource/project2-2.jpg",
-        "images/resource/service-d1.jpg",
-        "images/resource/floor-1.jpg",
-        "images/resource/project2-1.jpg",
-        "images/resource/project1-1.jpg",
-        "images/resource/project1-2.jpg",
-        "images/resource/project1-3.jpg",
-        "images/resource/gallery-4.jpg",
-        "images/resource/gallery-5.jpg",
-        "images/resource/gallery-6.jpg"
       ]
     }
   ]

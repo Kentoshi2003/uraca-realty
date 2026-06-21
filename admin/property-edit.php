@@ -10,6 +10,7 @@ require_admin();
 $propertyId = isset($_GET['id']) ? (int) $_GET['id'] : null;
 $property = $propertyId ? get_admin_property($propertyId) : null;
 $categories = get_categories(false);
+$categoryIds = array_map('intval', array_column($categories, 'id'));
 $errors = [];
 
 const LISTING_HERO_WIDTH = 1600;
@@ -224,12 +225,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = trim((string) ($_POST['name'] ?? ''));
     $slug = trim((string) ($_POST['slug'] ?? '')) ?: slugify($name);
     $categoryId = (int) ($_POST['category_id'] ?? 0);
+    $listingPurpose = normalize_listing_purpose((string) ($_POST['listing_purpose'] ?? ''));
 
     if ($name === '') {
         $errors[] = 'Name is required.';
     }
-    if ($categoryId <= 0) {
+    if ($categoryId <= 0 || !in_array($categoryId, $categoryIds, true)) {
         $errors[] = 'Category is required.';
+    }
+    if ($listingPurpose === '') {
+        $errors[] = 'Listing purpose must be For Sale or For Rent.';
     }
     validate_listing_uploads($errors);
 
@@ -240,6 +245,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'name' => $name,
             'price' => trim((string) ($_POST['price'] ?? '')),
             'status' => trim((string) ($_POST['status'] ?? '')),
+            'listing_purpose' => $listingPurpose,
             'location' => trim((string) ($_POST['location'] ?? '')),
             'summary' => trim((string) ($_POST['summary'] ?? '')),
             'bedrooms' => trim((string) ($_POST['bedrooms'] ?? '')),
@@ -275,6 +281,7 @@ $form = array_merge([
     'name' => '',
     'price' => '',
     'status' => '',
+    'listing_purpose' => 'sale',
     'location' => '',
     'summary' => '',
     'bedrooms' => '',
@@ -359,6 +366,15 @@ admin_header($property ? 'Edit Listing' : 'Add Listing');
       <div class="mb-3">
         <label for="status">Status</label>
         <input class="form-control" id="status" name="status" value="<?= e($form['status']) ?>">
+        <div class="form-text">Use descriptive availability such as Pre-selling, RFO, Furnished, or Clean Title.</div>
+      </div>
+      <div class="mb-3">
+        <label for="listing_purpose">Listing Purpose</label>
+        <select class="form-select" id="listing_purpose" name="listing_purpose" required>
+          <?php foreach (listing_purposes() as $purposeValue => $purposeLabel): ?>
+            <option value="<?= e($purposeValue) ?>" <?= ($form['listing_purpose'] ?? 'sale') === $purposeValue ? 'selected' : '' ?>><?= e($purposeLabel) ?></option>
+          <?php endforeach; ?>
+        </select>
       </div>
       <div class="mb-3">
         <label for="location">Location</label>

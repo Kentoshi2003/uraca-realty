@@ -1,4 +1,3 @@
 <?php
-$categorySlug = 'prime-lots';
-require __DIR__ . '/includes/category-page.php';
-
+header('Location: page-lots-and-land.php', true, 301);
+exit;

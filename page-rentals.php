@@ -1,4 +1,3 @@
 <?php
-$categorySlug = 'rentals';
-require __DIR__ . '/includes/category-page.php';
-
+header('Location: page-projects.php?purpose=rent', true, 301);
+exit;

@@ -7,6 +7,7 @@ $homeServices = cms_section('home', 'services_intro');
 $homeFeatured = cms_section('home', 'featured_intro');
 $homeTestimonials = cms_section('home', 'testimonials_intro');
 $homeContact = cms_section('home', 'contact_intro');
+$propertyCategories = get_categories();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -314,70 +315,24 @@ $homeContact = cms_section('home', 'contact_intro');
           </div>
           <div class="swiper three-grid-slider wow fadeInUp" data-wow-delay="200ms">
             <div class="swiper-wrapper">
+              <?php foreach ($propertyCategories as $category): ?>
               <div class="swiper-slide">
                 <div class="project-block">
                   <div class="inner-block">
                     <div class="image-block">
-                      <a class="image" href="page-house-and-lot.php">
-                        <img src="images/Categories/House and Lot.png" alt="House and Lot">
-                        <img src="images/Categories/House and Lot.png" alt="House and Lot">
+                      <a class="image" href="<?= e($category['page_url']) ?>">
+                        <img src="<?= e($category['hero_image']) ?>" alt="<?= e($category['name']) ?>">
+                        <img src="<?= e($category['hero_image']) ?>" alt="<?= e($category['name']) ?>">
                       </a>
                     </div>
                     <div class="content-block">
-                      <div class="h4 title"><a href="page-house-and-lot.php">House and lot</a></div>
-                      <a href="page-house-and-lot.php" class="read-more"><img src="images/icons/btn-icon-2.png" alt=""></a>
+                      <div class="h4 title"><a href="<?= e($category['page_url']) ?>"><?= e($category['name']) ?></a></div>
+                      <a href="<?= e($category['page_url']) ?>" class="read-more"><img src="images/icons/btn-icon-2.png" alt=""></a>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="swiper-slide">
-                <div class="project-block">
-                  <div class="inner-block">
-                    <div class="image-block">
-                      <a class="image" href="page-prime-lots.php">
-                        <img src="images/Categories/Prime Lots.png" alt="Prime Lots">
-                        <img src="images/Categories/Prime Lots.png" alt="Prime Lots">
-                      </a>
-                    </div>
-                    <div class="content-block">
-                      <div class="h4 title"><a href="page-prime-lots.php">Prime Lots</a></div>
-                      <a href="page-prime-lots.php" class="read-more"><img src="images/icons/btn-icon-2.png" alt=""></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="project-block">
-                  <div class="inner-block">
-                    <div class="image-block">
-                      <a class="image" href="page-rentals.php">
-                        <img src="images/Categories/Rentals.png" alt="Rentals">
-                        <img src="images/Categories/Rentals.png" alt="Rentals">
-                      </a>
-                    </div>
-                    <div class="content-block">
-                      <div class="h4 title"><a href="page-rentals.php">Rentals</a></div>
-                      <a href="page-rentals.php" class="read-more"><img src="images/icons/btn-icon-2.png" alt=""></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <div class="project-block">
-                  <div class="inner-block">
-                    <div class="image-block">
-                      <a class="image" href="page-construction.php">
-                        <img src="images/Categories/Construction.png" alt="Construction">
-                        <img src="images/Categories/Construction.png" alt="Construction">
-                      </a>
-                    </div>
-                    <div class="content-block">
-                      <div class="h4 title"><a href="page-construction.php">Construction</a></div>
-                      <a href="page-construction.php" class="read-more"><img src="images/icons/btn-icon-2.png" alt=""></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <?php endforeach; ?>
             </div>
           </div>
         </section>

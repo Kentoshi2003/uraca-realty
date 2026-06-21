@@ -22,12 +22,39 @@ function get_category_by_slug(string $slug): ?array
     return $category ?: null;
 }
 
-function get_properties_by_category(string $slug, bool $publishedOnly = true): array
+function listing_purposes(): array
+{
+    return [
+        'sale' => 'For Sale',
+        'rent' => 'For Rent',
+    ];
+}
+
+function normalize_listing_purpose(?string $purpose): string
+{
+    $purpose = strtolower(trim((string) $purpose));
+    return array_key_exists($purpose, listing_purposes()) ? $purpose : '';
+}
+
+function get_properties(?string $categorySlug = null, ?string $purpose = null, bool $publishedOnly = true): array
 {
     $sql = 'SELECT p.*, c.name AS category_name, c.slug AS category_slug, c.page_url AS category_page_url
         FROM properties p
         INNER JOIN categories c ON c.id = p.category_id
-        WHERE c.slug = :slug';
+        WHERE c.is_active = 1';
+    $params = [];
+
+    $categorySlug = trim((string) $categorySlug);
+    if ($categorySlug !== '') {
+        $sql .= ' AND c.slug = :category_slug';
+        $params['category_slug'] = $categorySlug;
+    }
+
+    $purpose = normalize_listing_purpose($purpose);
+    if ($purpose !== '') {
+        $sql .= ' AND p.listing_purpose = :listing_purpose';
+        $params['listing_purpose'] = $purpose;
+    }
 
     if ($publishedOnly) {
         $sql .= ' AND p.is_published = 1';
@@ -35,9 +62,14 @@ function get_properties_by_category(string $slug, bool $publishedOnly = true): a
 
     $sql .= ' ORDER BY p.sort_order ASC, p.updated_at DESC, p.name ASC';
     $stmt = db()->prepare($sql);
-    $stmt->execute(['slug' => $slug]);
+    $stmt->execute($params);
 
     return $stmt->fetchAll();
+}
+
+function get_properties_by_category(string $slug, bool $publishedOnly = true, ?string $purpose = null): array
+{
+    return get_properties($slug, $purpose, $publishedOnly);
 }
 
 function get_property_by_slug(string $slug, bool $publishedOnly = true): ?array
@@ -122,9 +154,9 @@ function save_property(array $data, array $descriptions, array $features, ?int $
 {
     if ($propertyId === null) {
         $stmt = db()->prepare('INSERT INTO properties
-            (category_id, slug, name, price, status, location, summary, bedrooms, bathrooms, parking, lot_area, floor_area, contact_name, contact_phone, hero_image, is_published, sort_order)
+            (category_id, slug, name, price, status, listing_purpose, location, summary, bedrooms, bathrooms, parking, lot_area, floor_area, contact_name, contact_phone, hero_image, is_published, sort_order)
             VALUES
-            (:category_id, :slug, :name, :price, :status, :location, :summary, :bedrooms, :bathrooms, :parking, :lot_area, :floor_area, :contact_name, :contact_phone, :hero_image, :is_published, :sort_order)');
+            (:category_id, :slug, :name, :price, :status, :listing_purpose, :location, :summary, :bedrooms, :bathrooms, :parking, :lot_area, :floor_area, :contact_name, :contact_phone, :hero_image, :is_published, :sort_order)');
     } else {
         $stmt = db()->prepare('UPDATE properties SET
             category_id = :category_id,
@@ -132,6 +164,7 @@ function save_property(array $data, array $descriptions, array $features, ?int $
             name = :name,
             price = :price,
             status = :status,
+            listing_purpose = :listing_purpose,
             location = :location,
             summary = :summary,
             bedrooms = :bedrooms,
@@ -153,6 +186,7 @@ function save_property(array $data, array $descriptions, array $features, ?int $
         'name' => $data['name'],
         'price' => $data['price'],
         'status' => $data['status'],
+        'listing_purpose' => normalize_listing_purpose($data['listing_purpose'] ?? '') ?: 'sale',
         'location' => $data['location'],
         'summary' => $data['summary'],
         'bedrooms' => $data['bedrooms'],

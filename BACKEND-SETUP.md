@@ -9,6 +9,11 @@
 5. Seed the current listings:
    `C:\xampp\php\php.exe database\seed_from_json.php`
 
+For an existing installation, apply the four-category property taxonomy upgrade once after deploying the new code:
+`C:\xampp\php\php.exe database\migrate_property_taxonomy.php`
+
+The taxonomy migration is idempotent and can be rerun safely. It adds the structured sale/rent purpose, remaps existing listings, unpublishes the former construction packages, and creates the Construction & Design-Build CMS service.
+
 ## Admin Login
 - URL: `/admin/login.php`
 - Seeded email: `admin@uracarealtyph.com`

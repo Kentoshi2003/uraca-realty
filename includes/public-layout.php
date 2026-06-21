@@ -50,10 +50,10 @@ function render_public_header(): void
     $is_listings = in_array($current_script, [
         'page-projects.php',
         'page-project-details.php',
-        'page-house-and-lot.php',
-        'page-prime-lots.php',
-        'page-rentals.php',
-        'page-construction.php'
+        'page-houses-and-townhouses.php',
+        'page-condos-and-apartments.php',
+        'page-lots-and-land.php',
+        'page-commercial-and-investment.php'
     ], true);
     ?>
 <body>

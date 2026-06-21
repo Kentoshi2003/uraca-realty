@@ -1,4 +1,3 @@
 <?php
-$categorySlug = 'house-and-lot';
-require __DIR__ . '/includes/category-page.php';
-
+header('Location: page-houses-and-townhouses.php', true, 301);
+exit;

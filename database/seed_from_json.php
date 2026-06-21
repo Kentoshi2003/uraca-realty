@@ -54,6 +54,7 @@ try {
             'name' => $property['name'],
             'price' => $property['price'] ?? null,
             'status' => $property['status'] ?? null,
+            'listing_purpose' => $property['listingPurpose'] ?? 'sale',
             'location' => $property['location'] ?? null,
             'summary' => $property['summary'] ?? null,
             'bedrooms' => $property['bedrooms'] ?? null,

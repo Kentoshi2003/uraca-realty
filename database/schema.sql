@@ -27,6 +27,7 @@ CREATE TABLE IF NOT EXISTS properties (
   name VARCHAR(220) NOT NULL,
   price VARCHAR(120) NULL,
   status VARCHAR(120) NULL,
+  listing_purpose VARCHAR(20) NOT NULL DEFAULT 'sale',
   location VARCHAR(220) NULL,
   summary TEXT NULL,
   bedrooms VARCHAR(80) NULL,
@@ -43,6 +44,7 @@ CREATE TABLE IF NOT EXISTS properties (
   updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   CONSTRAINT fk_properties_category FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE RESTRICT,
   INDEX idx_properties_category_published (category_id, is_published),
+  INDEX idx_properties_category_purpose_published (category_id, listing_purpose, is_published),
   INDEX idx_properties_slug_published (slug, is_published)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
