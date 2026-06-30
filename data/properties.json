@@ -518,6 +518,57 @@
         "images/Listings/BGC Park Triangle Corporate Plaza/3.jpg",
         "images/Listings/BGC Park Triangle Corporate Plaza/4.jpg"
       ]
+    },
+    {
+      "id": "amiya-resort-residences-davao-city",
+      "category": "houses-townhouses",
+      "name": "Amiya Resort Residences - Resort-Style Living in Davao City",
+      "price": "Contact for Price",
+      "status": "Available",
+      "listingPurpose": "sale",
+      "location": "Amiya Resort Residences, Davao City",
+      "summary": "Discover resort-inspired living at Amiya Resort Residences, a premier residential community in Davao City offering five thoughtfully designed home models. Whether you're purchasing your first home, upgrading your family's lifestyle, or investing in premium real estate, Amiya provides the perfect balance of comfort, elegance, and nature.",
+      "description": [
+        "Experience a lifestyle where modern architecture meets tranquil surroundings at Amiya Resort Residences. Designed as a resort-inspired community, Amiya offers beautifully crafted homes surrounded by lush landscapes, open spaces, and an environment that promotes relaxation, security, and everyday comfort for every family.",
+        "Choose from five distinct home designs tailored to different lifestyles and family sizes. From practical two-bedroom residences to expansive luxury homes with generous living spaces, every model is thoughtfully planned with functional layouts, quality finishes, and spacious outdoor areas to create the ideal place to call home.",
+        "Whether you're a first-time homeowner, expanding your living space, or making a long-term real estate investment, Amiya Resort Residences offers a community built around quality living and lasting value. Schedule a site visit today and discover the home that perfectly complements your lifestyle.",
+        "Available house models include Dahlia with 2 bedrooms, 2 bathrooms, 1 carport, 200 sqm lot area, and 75.61 sqm floor area; Iris with 3 bedrooms, 2 bathrooms, 1 carport, 200 sqm lot area, and 89.63 sqm floor area; Rosemary with 3 bedrooms, 3 bathrooms, 1 carport, 200 sqm lot area, and 101.81 sqm floor area; Rosea with 5 bedrooms, 4 bathrooms, 1 carport, 500 sqm lot area, and 286.10 sqm floor area; and Magnolia A with 5 bedrooms, 5 bathrooms, 2-car garage, 800 sqm lot area, and 439.75 sqm floor area."
+      ],
+      "features": [
+        "Five Distinct House Models to Choose From",
+        "Dahlia: 2 Bedrooms, 2 Bathrooms, 1 Carport, 200 sqm Lot Area, 75.61 sqm Floor Area",
+        "Iris: 3 Bedrooms, 2 Bathrooms, 1 Carport, 200 sqm Lot Area, 89.63 sqm Floor Area",
+        "Rosemary: 3 Bedrooms, 3 Bathrooms, 1 Carport, 200 sqm Lot Area, 101.81 sqm Floor Area",
+        "Rosea: 5 Bedrooms, 4 Bathrooms, 1 Carport, 500 sqm Lot Area, 286.10 sqm Floor Area",
+        "Magnolia A: 5 Bedrooms, 5 Bathrooms, 2-Car Garage, 800 sqm Lot Area, 439.75 sqm Floor Area",
+        "Resort-Style Residential Community",
+        "Spacious Residential Lots",
+        "Family-Friendly Environment",
+        "Modern Home Designs with Functional Layouts",
+        "Peaceful Community Surrounded by Nature",
+        "Ideal for Families, Homeowners, and Investors"
+      ],
+      "bedrooms": "2-5 Bedrooms",
+      "bathrooms": "2-5 Bathrooms",
+      "parking": "1 Carport to 2-Car Garage",
+      "lotArea": "200-800 sqm",
+      "floorArea": "75.61-439.75 sqm",
+      "updatedAt": "Updated June 2026",
+      "contactName": "Maylyn Grace Uraca",
+      "contactPhone": "+63 9185305683",
+      "heroImage": "images/Listings/Amiya Resort Residences/hero.jpg",
+      "gallery": [
+        "images/Listings/Amiya Resort Residences/1.jpg",
+        "images/Listings/Amiya Resort Residences/2.jpg",
+        "images/Listings/Amiya Resort Residences/3.jpg",
+        "images/Listings/Amiya Resort Residences/4.jpg",
+        "images/Listings/Amiya Resort Residences/5.jpg",
+        "images/Listings/Amiya Resort Residences/6.jpg",
+        "images/Listings/Amiya Resort Residences/7.jpg",
+        "images/Listings/Amiya Resort Residences/8.jpg",
+        "images/Listings/Amiya Resort Residences/9.jpg",
+        "images/Listings/Amiya Resort Residences/10.jpg"
+      ]
     }
   ]
 }
