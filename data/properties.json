@@ -673,6 +673,35 @@
         "images/Listings/Maa Exclusive Subdivision/23.jpg",
         "images/Listings/Maa Exclusive Subdivision/24.jpg"
       ]
+    },
+    {
+      "id": "north-town-residence",
+      "category": "houses-townhouses",
+      "name": "North Town Residence",
+      "price": "",
+      "status": "",
+      "listingPurpose": "sale",
+      "location": "Cabantian, Davao City",
+      "summary": "",
+      "description": [],
+      "features": [],
+      "bedrooms": "",
+      "bathrooms": "",
+      "parking": "",
+      "lotArea": "",
+      "floorArea": "",
+      "updatedAt": "Updated July 2026",
+      "contactName": "Maylyn Grace Uraca",
+      "contactPhone": "+63 9185305683",
+      "heroImage": "images/Listings/North Town Residence/hero.png",
+      "gallery": [
+        "images/Listings/North Town Residence/1.jpg",
+        "images/Listings/North Town Residence/2.jpg",
+        "images/Listings/North Town Residence/3.jpg",
+        "images/Listings/North Town Residence/4.jpg",
+        "images/Listings/North Town Residence/5.jpg",
+        "images/Listings/North Town Residence/6.jpg"
+      ]
     }
   ]
 }
