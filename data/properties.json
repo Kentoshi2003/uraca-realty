@@ -626,6 +626,53 @@
         "images/Listings/Garden City of Samal/6.jpg",
         "images/Listings/Garden City of Samal/7.jpg"
       ]
+    },
+    {
+      "id": "maa-exclusive-subdivision",
+      "category": "lots-land",
+      "name": "Maa Exclusive Subdivision",
+      "price": "",
+      "status": "",
+      "listingPurpose": "sale",
+      "location": "Maa, Davao City",
+      "summary": "",
+      "description": [],
+      "features": [],
+      "bedrooms": "",
+      "bathrooms": "",
+      "parking": "",
+      "lotArea": "",
+      "floorArea": "",
+      "updatedAt": "Updated July 2026",
+      "contactName": "Maylyn Grace Uraca",
+      "contactPhone": "+63 9185305683",
+      "heroImage": "images/Listings/Maa Exclusive Subdivision/hero.jpg",
+      "gallery": [
+        "images/Listings/Maa Exclusive Subdivision/1.jpg",
+        "images/Listings/Maa Exclusive Subdivision/2.jpg",
+        "images/Listings/Maa Exclusive Subdivision/3.jpg",
+        "images/Listings/Maa Exclusive Subdivision/4.jpg",
+        "images/Listings/Maa Exclusive Subdivision/5.jpg",
+        "images/Listings/Maa Exclusive Subdivision/6.jpg",
+        "images/Listings/Maa Exclusive Subdivision/7.jpg",
+        "images/Listings/Maa Exclusive Subdivision/8.jpg",
+        "images/Listings/Maa Exclusive Subdivision/9.jpg",
+        "images/Listings/Maa Exclusive Subdivision/10.jpg",
+        "images/Listings/Maa Exclusive Subdivision/11.jpg",
+        "images/Listings/Maa Exclusive Subdivision/12.jpg",
+        "images/Listings/Maa Exclusive Subdivision/13.jpg",
+        "images/Listings/Maa Exclusive Subdivision/14.jpg",
+        "images/Listings/Maa Exclusive Subdivision/15.jpg",
+        "images/Listings/Maa Exclusive Subdivision/16.jpg",
+        "images/Listings/Maa Exclusive Subdivision/17.jpg",
+        "images/Listings/Maa Exclusive Subdivision/18.jpg",
+        "images/Listings/Maa Exclusive Subdivision/19.jpg",
+        "images/Listings/Maa Exclusive Subdivision/20.jpg",
+        "images/Listings/Maa Exclusive Subdivision/21.jpg",
+        "images/Listings/Maa Exclusive Subdivision/22.jpg",
+        "images/Listings/Maa Exclusive Subdivision/23.jpg",
+        "images/Listings/Maa Exclusive Subdivision/24.jpg"
+      ]
     }
   ]
 }
