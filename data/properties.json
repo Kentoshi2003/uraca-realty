@@ -754,6 +754,54 @@
         "images/Listings/Woodlane Maa Davao City/17.png",
         "images/Listings/Woodlane Maa Davao City/18.png"
       ]
+    },
+    {
+      "id": "spacious-2-storey-family-home-maa",
+      "category": "houses-townhouses",
+      "name": "Spacious 2-Storey Family Home in Maa, Davao City",
+      "price": "₱35,000,000",
+      "status": "For Sale",
+      "listingPurpose": "sale",
+      "location": "Maa, Davao City",
+      "summary": "Discover a spacious and well-appointed 2-storey home in Maa, Davao City, offering generous indoor and outdoor living spaces, modern security features, and ample parking. Perfect for growing families seeking comfort, privacy, and convenience in a peaceful residential neighborhood.",
+      "description": [
+        "Experience refined family living in this impressive 2-storey house and lot located in the highly desirable area of Maa, Davao City. Designed with both functionality and comfort in mind, this home offers expansive living spaces, quality finishes, and a layout that caters to modern family lifestyles.",
+        "Situated on a 301-square-meter lot with a spacious 280-square-meter floor area, the property features four generously sized bedrooms, four bathrooms, a functional dirty kitchen, and bright, open living and dining areas. A built-in CCTV security system provides added peace of mind, while the generous parking area accommodates up to five vehicles, making it ideal for larger households or those who frequently entertain guests.",
+        "Conveniently located near schools, shopping centers, healthcare facilities, and major road networks, this home offers the perfect balance of accessibility and tranquility. Open for bank financing, this exceptional property is an outstanding opportunity for families looking to invest in a premium home within one of Davao City's established residential communities."
+      ],
+      "features": [
+        "Spacious 2-Storey Family Home",
+        "CCTV Security System Installed",
+        "Functional Dirty Kitchen",
+        "4–5 Car Parking Area",
+        "Bright and Spacious Living & Dining Areas",
+        "Open for Bank Financing",
+        "Peaceful and Accessible Residential Location"
+      ],
+      "bedrooms": "4",
+      "bathrooms": "4",
+      "parking": "4–5 Cars",
+      "lotArea": "301 sqm",
+      "floorArea": "280 sqm",
+      "updatedAt": "Updated July 2026",
+      "contactName": "Maylyn Grace Uraca",
+      "contactPhone": "+63 9185305683",
+      "heroImage": "images/Listings/2-Storey House and Lot in Maa/hero.png",
+      "gallery": [
+        "images/Listings/2-Storey House and Lot in Maa/1.png",
+        "images/Listings/2-Storey House and Lot in Maa/2.png",
+        "images/Listings/2-Storey House and Lot in Maa/3.png",
+        "images/Listings/2-Storey House and Lot in Maa/4.png",
+        "images/Listings/2-Storey House and Lot in Maa/5.png",
+        "images/Listings/2-Storey House and Lot in Maa/6.png",
+        "images/Listings/2-Storey House and Lot in Maa/7.png",
+        "images/Listings/2-Storey House and Lot in Maa/8.png",
+        "images/Listings/2-Storey House and Lot in Maa/9.png",
+        "images/Listings/2-Storey House and Lot in Maa/10.png",
+        "images/Listings/2-Storey House and Lot in Maa/11.png",
+        "images/Listings/2-Storey House and Lot in Maa/12.png",
+        "images/Listings/2-Storey House and Lot in Maa/13.png"
+      ]
     }
   ]
 }
