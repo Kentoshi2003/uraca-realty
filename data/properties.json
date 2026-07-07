@@ -702,6 +702,58 @@
         "images/Listings/North Town Residence/5.jpg",
         "images/Listings/North Town Residence/6.jpg"
       ]
+    },
+    {
+      "id": "semi-furnished-2-storey-woodlane-maa",
+      "category": "houses-townhouses",
+      "name": "Semi-Furnished 2-Storey House in Woodlane, Maa, Davao City",
+      "price": "₱12,000,000",
+      "status": "For Sale",
+      "listingPurpose": "sale",
+      "location": "Woodlane, Maa, Davao City",
+      "summary": "Own a beautifully maintained semi-furnished 2-storey home in the peaceful community of Woodlane, Maa, Davao City. Featuring spacious living areas, 3 bedrooms, a maid's room, and an additional 25 sqm excess lot, this property is ideal for families seeking comfort, convenience, and excellent value.",
+      "description": [
+        "Experience comfortable family living in this well-designed semi-furnished home located in the sought-after Woodlane community in Maa, Davao City. With its functional two-storey layout and modern interiors, this property offers the perfect blend of style, practicality, and everyday convenience.",
+        "Built on a 150-square-meter lot with an additional 25-square-meter excess lot, the home provides 124 square meters of thoughtfully planned living space. It features three spacious bedrooms, three toilets and baths, a dedicated maid's room, generous living and dining areas, and parking for two vehicles, making it ideal for growing families.",
+        "Situated in a peaceful and established neighborhood, this property offers easy access to schools, shopping centers, hospitals, and major roads throughout Davao City. Whether you're searching for your forever home or a valuable real estate investment, this residence presents an excellent opportunity in a prime residential location."
+      ],
+      "features": [
+        "Semi-Furnished 2-Storey House",
+        "Additional 25 sqm Excess Lot",
+        "Dedicated Maid's Room",
+        "Spacious Living and Dining Areas",
+        "Two-Car Covered Parking",
+        "Located in a Peaceful Residential Community in Maa, Davao City"
+      ],
+      "bedrooms": "3",
+      "bathrooms": "3",
+      "parking": "2 Cars",
+      "lotArea": "175 sqm (150 sqm + 25 sqm Excess Lot)",
+      "floorArea": "124 sqm",
+      "updatedAt": "Updated July 2026",
+      "contactName": "Maylyn Grace Uraca",
+      "contactPhone": "+63 9185305683",
+      "heroImage": "images/Listings/Woodlane Maa Davao City/hero.png",
+      "gallery": [
+        "images/Listings/Woodlane Maa Davao City/1.png",
+        "images/Listings/Woodlane Maa Davao City/2.png",
+        "images/Listings/Woodlane Maa Davao City/3.png",
+        "images/Listings/Woodlane Maa Davao City/4.png",
+        "images/Listings/Woodlane Maa Davao City/5.png",
+        "images/Listings/Woodlane Maa Davao City/6.png",
+        "images/Listings/Woodlane Maa Davao City/7.png",
+        "images/Listings/Woodlane Maa Davao City/8.png",
+        "images/Listings/Woodlane Maa Davao City/9.png",
+        "images/Listings/Woodlane Maa Davao City/10.png",
+        "images/Listings/Woodlane Maa Davao City/11.png",
+        "images/Listings/Woodlane Maa Davao City/12.png",
+        "images/Listings/Woodlane Maa Davao City/13.png",
+        "images/Listings/Woodlane Maa Davao City/14.png",
+        "images/Listings/Woodlane Maa Davao City/15.png",
+        "images/Listings/Woodlane Maa Davao City/16.png",
+        "images/Listings/Woodlane Maa Davao City/17.png",
+        "images/Listings/Woodlane Maa Davao City/18.png"
+      ]
     }
   ]
 }
