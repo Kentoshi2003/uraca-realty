@@ -569,6 +569,33 @@
         "images/Listings/Amiya Resort Residences/9.jpg",
         "images/Listings/Amiya Resort Residences/10.jpg"
       ]
+    },
+    {
+      "id": "northcrest-subdivision",
+      "category": "lots-land",
+      "name": "NorthCrest Subdivision",
+      "price": "",
+      "status": "",
+      "listingPurpose": "sale",
+      "location": "Northcrest, Cabantian, Davao City",
+      "summary": "",
+      "description": [],
+      "features": [],
+      "bedrooms": "",
+      "bathrooms": "",
+      "parking": "",
+      "lotArea": "",
+      "floorArea": "",
+      "updatedAt": "Updated July 2026",
+      "contactName": "Maylyn Grace Uraca",
+      "contactPhone": "+63 9185305683",
+      "heroImage": "images/Listings/NorthCrest Subdivision/hero.png",
+      "gallery": [
+        "images/Listings/NorthCrest Subdivision/1.jpg",
+        "images/Listings/NorthCrest Subdivision/2.jpg",
+        "images/Listings/NorthCrest Subdivision/3.jpg",
+        "images/Listings/NorthCrest Subdivision/4.jpg"
+      ]
     }
   ]
 }
