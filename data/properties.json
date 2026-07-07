@@ -596,6 +596,36 @@
         "images/Listings/NorthCrest Subdivision/3.jpg",
         "images/Listings/NorthCrest Subdivision/4.jpg"
       ]
+    },
+    {
+      "id": "garden-city-samal",
+      "category": "lots-land",
+      "name": "Garden City of Samal",
+      "price": "",
+      "status": "",
+      "listingPurpose": "sale",
+      "location": "Samal Island, Davao del Norte",
+      "summary": "",
+      "description": [],
+      "features": [],
+      "bedrooms": "",
+      "bathrooms": "",
+      "parking": "",
+      "lotArea": "",
+      "floorArea": "",
+      "updatedAt": "Updated July 2026",
+      "contactName": "Maylyn Grace Uraca",
+      "contactPhone": "+63 9185305683",
+      "heroImage": "images/Listings/Garden City of Samal/hero.png",
+      "gallery": [
+        "images/Listings/Garden City of Samal/1.jpg",
+        "images/Listings/Garden City of Samal/2.png",
+        "images/Listings/Garden City of Samal/3.png",
+        "images/Listings/Garden City of Samal/4.jpg",
+        "images/Listings/Garden City of Samal/5.jpg",
+        "images/Listings/Garden City of Samal/6.jpg",
+        "images/Listings/Garden City of Samal/7.jpg"
+      ]
     }
   ]
 }
